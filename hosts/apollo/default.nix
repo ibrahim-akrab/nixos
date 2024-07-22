@@ -2,18 +2,22 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disko.nix
+      inputs.hardware.nixosModules.common-cpu-intel
+      inputs.hardware.nixosModules.common-pc-laptop
+      inputs.hardware.nixosModules.common-pc-laptop-acpi_call
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "apollo"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -80,10 +84,15 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  };
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
@@ -91,9 +100,13 @@
   # };
 
   # List services that you want to enable:
+  services.acpid.enable = true;
+  services.hardware.bolt.enable = false;
+  powerManagement.enable = true;
+  powerManagement.powertop.enable = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

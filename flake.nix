@@ -1,6 +1,12 @@
 {
   description = "Your new nix config";
 
+  nixConfig = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
+
   inputs = {
     # Nix ecosystem
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -22,9 +28,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # impermenance
     impermanence.url = "github:nix-community/impermanence";
+
+    # hyprland
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = {
@@ -35,6 +43,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    lib = nixpkgs.lib // home-manager.lib;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
       system:
@@ -70,7 +79,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/apollo
-          disko.nixosModules.disko
+          inputs.disko.nixosModules.disko
         ];
       };
     };
