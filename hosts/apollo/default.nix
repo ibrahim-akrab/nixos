@@ -144,6 +144,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "tty" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPOv3nJVV3SrGB0rcadpOdr7w0tCplVD9qU5Ib0/UkMP ibrahim@ibrahim-desktop" ];
+    passwordFile = "/persist/passwords/user";
     # packages = with pkgs; [
     #   firefox
     #   tree
