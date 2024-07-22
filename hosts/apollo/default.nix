@@ -139,12 +139,15 @@
   # Enable flakes
   nix.settings.experimental-features = "nix-command flakes";
 
+  # Don't allow mutation of users outside of the config.
+  users.mutableUsers = false;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ibrahim = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "tty" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPOv3nJVV3SrGB0rcadpOdr7w0tCplVD9qU5Ib0/UkMP ibrahim@ibrahim-desktop" ];
-    passwordFile = "/persist/passwords/user";
+    hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/";
     # packages = with pkgs; [
     #   firefox
     #   tree
