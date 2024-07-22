@@ -27,10 +27,10 @@
       description = "Rollback btrfs rootfs";
       wantedBy = [ "initrd.target" ];
       requires = [
-        "dev-vda3"
+        "dev-nvme0n1p2"
       ];
       after = [
-        "dev-vda3"
+        "dev-nvme0n1p2"
         # for luks
         "systemd-cryptsetup@${config.networking.hostName}.service"
       ];
@@ -42,7 +42,7 @@
 
         # We first mount the btrfs root to /mnt
         # so we can manipulate btrfs subvolumes.
-        mount -o subvol=/ /dev/vda3 /mnt
+        mount -o subvol=/ /dev/nvme0n1p2 /mnt
 
         # While we're tempted to just delete /root and create
         # a new snapshot from /root-blank, /root is already
