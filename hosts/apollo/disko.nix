@@ -19,12 +19,6 @@
                 ];
               };
             };
-            swap = {
-              size = "32G";
-              content = {
-                type = "swap";
-              };
-            };
             luks = {
               size = "100%";
               content = {
@@ -60,6 +54,10 @@
                     "/log" = {
                       mountpoint = "/log";
                       mountOptions = [ "compress=zstd" "noatime" ];
+                    };
+                    "/swap" = {
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "32B";
                     };
                   };
                 };
