@@ -87,6 +87,7 @@
         modules = [
           ./hosts/apollo
           inputs.disko.nixosModules.disko
+          inputs.impermanence.nixosModules.impermanence
         ];
       };
     };
