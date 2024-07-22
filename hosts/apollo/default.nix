@@ -12,6 +12,7 @@
       inputs.hardware.nixosModules.common-cpu-intel
       inputs.hardware.nixosModules.common-pc-laptop
       inputs.hardware.nixosModules.common-pc-laptop-acpi_call
+      inputs.hardware.nixosModules.common-pc-laptop-ssd
     ];
 
   # Use the systemd-boot EFI boot loader.
