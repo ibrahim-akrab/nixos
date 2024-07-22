@@ -41,6 +41,11 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
 
 
 
@@ -89,10 +94,10 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  # };
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
@@ -101,7 +106,7 @@
 
   # List services that you want to enable:
   services.acpid.enable = true;
-  services.hardware.bolt.enable = false;
+  services.hardware.bolt.enable = true;
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
 
