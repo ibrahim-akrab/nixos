@@ -140,8 +140,22 @@ in
   # Allow unfree packages
   # nixpkgs.config.allowUnfree = true;
 
-  # Enable flakes
-  nix.settings.experimental-features = "nix-command flakes";
+  # nix configuration
+  nix = {
+    package = pkgs.nixVersions.nix_2_22;
+    settings = {
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+      auto-optimise-store = lib.mkDefault true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      warn-dirty = false;
+    };
+  };
 
   # Don't allow mutation of users outside of the config.
   users.mutableUsers = false;
@@ -161,11 +175,6 @@ in
     hashedPassword = hashedPassword;
     openssh.authorizedKeys.keys = sshkeys;
   };
-
-  trusted-users = [
-    "root"
-    "@wheel"
-  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
