@@ -162,6 +162,11 @@ in
     openssh.authorizedKeys.keys = sshkeys;
   };
 
+  trusted-users = [
+    "root"
+    "@wheel"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
