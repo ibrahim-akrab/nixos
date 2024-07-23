@@ -4,6 +4,10 @@
 
 { config, lib, pkgs, inputs, ... }:
 
+let
+  hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/"; # mkpasswd -m sha-512
+  sshkeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-deskto" ];
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -146,12 +150,16 @@
   users.users.ibrahim = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "tty" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-deskto" ];
-    hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/";
+    openssh.authorizedKeys.keys = sshkeys;
+    hashedPassword = hashedPassword;
     # packages = with pkgs; [
     #   firefox
     #   tree
     # ];
+  };
+  users.users.root = {
+    hashedPassword = hashedPassword;
+    openssh.authorizedKeys.keys = sshkeys;
   };
 
   # List packages installed in system profile. To search, run:
