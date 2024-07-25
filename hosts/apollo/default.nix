@@ -198,6 +198,7 @@ in
 
   # List services that you want to enable:
   services.acpid.enable = true;
+  services.fprintd.enable = true;
   services.hardware.bolt.enable = true;
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
