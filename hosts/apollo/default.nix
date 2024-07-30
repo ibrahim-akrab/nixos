@@ -104,8 +104,7 @@ in
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # use KDE plasma with wayland
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
