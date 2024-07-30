@@ -31,6 +31,12 @@
     # impermenance
     impermanence.url = "github:nix-community/impermanence";
 
+    # NoteBook FanControl (nbfc)
+    nbfc-linux = {
+      url = "github:nbfc-linux/nbfc-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # hyprland
     # hyprland = {
     #   url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

@@ -13,6 +13,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./disko.nix
+      ./nbfc.nix
       inputs.hardware.nixosModules.common-cpu-intel
       inputs.hardware.nixosModules.common-pc-laptop
       inputs.hardware.nixosModules.common-pc-laptop-acpi_call
