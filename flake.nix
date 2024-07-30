@@ -33,7 +33,7 @@
 
     # NoteBook FanControl (nbfc)
     nbfc-linux = {
-      url = "github:nbfc-linux/nbfc-linux";
+      url = "github:ibrahim-akrab/nbfc-linux";  # my fork without qt gui (broken on master)
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
