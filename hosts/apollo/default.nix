@@ -104,12 +104,12 @@ in
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver = {
-  #   enable = true;
-  #   displayManager.gdm.enable = true;
-  #   desktopManager.gnome.enable = true;
-  # };
+  services.xserver.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  }
+  services.desktopManager.plasma6.enable = true;
 
 
   security.sudo.extraConfig = ''
@@ -186,10 +186,10 @@ in
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  # };
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
