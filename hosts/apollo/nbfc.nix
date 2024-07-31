@@ -48,12 +48,4 @@
         sudo ${inputs.nbfc-linux.packages.x86_64-linux.default}/bin/ec_probe write 0xD7 "$hex_result"
     '')
   ];
-#   systemd.services.nbfc_service = {
-#     enable = true;
-#     description = "NoteBook FanControl service";
-#     serviceConfig.Type = "simple";
-#     path = [pkgs.kmod];
-#     script = "${inputs.nbfc-linux.packages.x86_64-linux.default}/${command}";
-#     wantedBy = ["multi-user.target"];
-#   };
 }
