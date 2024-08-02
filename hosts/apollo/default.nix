@@ -21,42 +21,53 @@ in
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
-  # delete root on boot
-  boot.initrd = {
-    enable = true;
-    supportedFilesystems = [ "btrfs" ];
-    postResumeCommands = lib.mkAfter ''
-      mkdir /btrfs_tmp
-      mount /dev/mapper/crypted /btrfs_tmp
-      if [[ -e /btrfs_tmp/root ]]; then
-          mkdir -p /btrfs_tmp/old_roots
-          timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
-      fi
+    kernelPackages = pkgs.linuxPackages_latest;
 
-      delete_subvolume_recursively() {
-          IFS=$'\n'
-          for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-              delete_subvolume_recursively "/btrfs_tmp/$i"
-          done
-          btrfs subvolume delete "$1"
-      }
+    kernelParams = [ "resume_offset=533760" ];
+    resumeDevice = "/dev/disk/by-label/nixos";
 
-      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
-          delete_subvolume_recursively "$i"
-      done
 
-      btrfs subvolume create /btrfs_tmp/root
-      btrfs subvolume snapshot -r /btrfs_tmp/root /btrfs/root-blank
+    # delete root on boot
+    initrd = {
+      enable = true;
+      supportedFilesystems = [ "btrfs" ];
+      postResumeCommands = lib.mkAfter ''
+        mkdir /btrfs_tmp
+        mount /dev/mapper/crypted /btrfs_tmp
+        if [[ -e /btrfs_tmp/root ]]; then
+            mkdir -p /btrfs_tmp/old_roots
+            timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+            mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+        fi
 
-      umount /btrfs_tmp
-      rmdir /btrfs_tmp
-    '';
-  };
+        delete_subvolume_recursively() {
+            IFS=$'\n'
+            for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+                delete_subvolume_recursively "/btrfs_tmp/$i"
+            done
+            btrfs subvolume delete "$1"
+        }
+
+        for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+            delete_subvolume_recursively "$i"
+        done
+
+        btrfs subvolume create /btrfs_tmp/root
+        btrfs subvolume snapshot -r /btrfs_tmp/root /btrfs/root-blank
+
+        umount /btrfs_tmp
+        rmdir /btrfs_tmp
+      '';
+    };
+  }
+
+
 
 
   networking.hostName = "apollo"; # Define your hostname.

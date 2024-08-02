@@ -33,7 +33,7 @@
                 # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = [ "-L" "nixos" "-f" ];
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
