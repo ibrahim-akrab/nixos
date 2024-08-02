@@ -51,7 +51,10 @@ in
       done
 
       btrfs subvolume create /btrfs_tmp/root
+      btrfs subvolume snapshot -r /btrfs_tmp/root /btrfs/root-blank
+
       umount /btrfs_tmp
+      rmdir /btrfs_tmp
     '';
   };
 
@@ -150,7 +153,23 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    (writeShellScriptBin "persist" ''
+      sudo mkdir -p "/persist/$(dirname $1)"
+      sudo cp -r {,/persist}$1
+    '')
   ];
+  environment.persist."/persist" = {
+    hideMounts = true;
+    directories = [
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/NetworkManager"
+      "/var/lib/nixos"
+    ];
+    files = [
+      "/etc/machine-id"
+    ];
+
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

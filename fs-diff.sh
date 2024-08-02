@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 # fs-diff.sh
 
+cleanup() {
+  sudo umount /btrfs_tmp
+  sudo rmdir /btrfs_tmp
+}
+
+trap cleanup EXIT
+
 sudo mkdir /btrfs_tmp
 sudo mount -o subvol=/ /dev/mapper/crypted /btrfs_tmp
 
 set -euo pipefail
 
-OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
+OLD_TRANSID=$(sudo btrfs subvolume find-new /btrfs_tmp/root-blank 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
-sudo btrfs subvolume find-new "/mnt/root" "$OLD_TRANSID" |
+sudo btrfs subvolume find-new "/btrfs_tmp/root" "$OLD_TRANSID" |
 sed '$d' |
 cut -f17- -d' ' |
 sort |
@@ -24,4 +31,3 @@ while read path; do
     echo "$path"
   fi
 done
-sudo umount /btrfs_tmp
