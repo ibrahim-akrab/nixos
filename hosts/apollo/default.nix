@@ -154,8 +154,9 @@ in
     wget
     git
     (writeShellScriptBin "persist" ''
-      sudo mkdir -p "/persist/$(dirname $1)"
-      sudo cp -r {,/persist}$1
+      dir="/persist/$(dirname $1)"
+      sudo mkdir -p $dir
+      sudo cp -r $@ $dir
     '')
     (writeShellScriptBin "fs-diff" ''
       cleanup() {

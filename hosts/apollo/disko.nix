@@ -68,4 +68,6 @@
       };
     };
   };
+
+  fileSystems."/persist".neededForBoot = true;
 }
