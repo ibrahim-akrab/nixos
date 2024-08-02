@@ -190,7 +190,7 @@ in
       done
     '')
   ];
-  environment.persist."/persist" = {
+  environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
       "/etc/NetworkManager/system-connections"
