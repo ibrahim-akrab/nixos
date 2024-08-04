@@ -122,6 +122,11 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
+    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
+  '';
+
   # nix configuration
   nix = {
     package = pkgs.nixVersions.nix_2_22;
@@ -145,7 +150,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ibrahim = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "tty" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "tty" "video" ]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = sshkeys;
     hashedPassword = hashedPassword;
     # packages = with pkgs; [
@@ -164,6 +169,7 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    wluma
     (writeShellScriptBin "persist" ''
       dir="/persist/$(dirname $1)"
       sudo mkdir -p $dir
@@ -209,6 +215,7 @@ in
       "/var/lib/NetworkManager"
       "/var/lib/nixos"
       "/var/lib/fprint"
+      "/var/lib/systemd/backlight"
     ];
     files = [
       "/etc/machine-id"
@@ -218,6 +225,20 @@ in
       "/etc/ssh/ssh_host_rsa_key.pub"
     ];
 
+  };
+
+
+  systemd.user.services.wluma = {
+    description = "Adjusting screen brightness based on screen contents and amount of ambient light";
+    enable = true;
+    after = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    script = "${pkgs.wluma}/bin/wluma";
+    serviceConfig = {
+      Restart = "always";
+      Type = "simple";
+    };
+    wantedBy = [ "graphical-session.target" ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -236,6 +257,7 @@ in
   services.acpid.enable = true;
   services.fprintd.enable = true;
   services.hardware.bolt.enable = true;
+  hardware.sensor.iio.enable = true;
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
 
