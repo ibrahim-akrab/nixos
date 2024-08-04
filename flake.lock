@@ -79,15 +79,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1722379752,
-        "narHash": "sha256-KN1zLz7SyZ8Ubs6hdfgeM4E3eWLx2ffzZ0gJ7jDfN/c=",
-        "owner": "ibrahim-akrab",
+        "lastModified": 1722758915,
+        "narHash": "sha256-DbSJvh7VgW9097i/9nrLzjJ6m6JjaBQFIYF14qaseEg=",
+        "owner": "nbfc-linux",
         "repo": "nbfc-linux",
-        "rev": "baab0bb6009481429c11bf84afbff2193b7ee93e",
+        "rev": "1bba65b21770eb7d214511c6e4a975ead750a8d6",
         "type": "github"
       },
       "original": {
-        "owner": "ibrahim-akrab",
+        "owner": "nbfc-linux",
         "repo": "nbfc-linux",
         "type": "github"
       }

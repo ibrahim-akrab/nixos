@@ -1,24 +1,26 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, inputs, ... }:
-
-let
-  hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/"; # mkpasswd -m sha-512
-  sshkeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-deskto" ];
-in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./disko.nix
-      ./nbfc.nix
-      inputs.hardware.nixosModules.common-cpu-intel
-      inputs.hardware.nixosModules.common-pc-laptop
-      inputs.hardware.nixosModules.common-pc-laptop-acpi_call
-      inputs.hardware.nixosModules.common-pc-laptop-ssd
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
+  hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/"; # mkpasswd -m sha-512
+  sshkeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-deskto"];
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./disko.nix
+    ./nbfc.nix
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-pc-laptop
+    inputs.hardware.nixosModules.common-pc-laptop-acpi_call
+    inputs.hardware.nixosModules.common-pc-laptop-ssd
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -29,14 +31,13 @@ in
 
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelParams = [ "resume_offset=533760" ];
+    kernelParams = ["resume_offset=533760"];
     resumeDevice = "/dev/disk/by-label/nixos";
-
 
     # delete root on boot
     initrd = {
       enable = true;
-      supportedFilesystems = [ "btrfs" ];
+      supportedFilesystems = ["btrfs"];
       postResumeCommands = lib.mkAfter ''
         mkdir /btrfs_tmp
         mount /dev/mapper/crypted /btrfs_tmp
@@ -67,13 +68,10 @@ in
     };
   };
 
-
-
-
   networking.hostName = "apollo"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Africa/Cairo";
@@ -97,13 +95,10 @@ in
   };
   services.desktopManager.plasma6.enable = true;
 
-
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot
     Defaults lecture = never
   '';
-
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -150,7 +145,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ibrahim = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "tty" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "tty" "video"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = sshkeys;
     hashedPassword = hashedPassword;
     # packages = with pkgs; [
@@ -224,21 +219,19 @@ in
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
     ];
-
   };
-
 
   systemd.user.services.wluma = {
     description = "Adjusting screen brightness based on screen contents and amount of ambient light";
     enable = true;
-    after = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
+    after = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
     script = "${pkgs.wluma}/bin/wluma";
     serviceConfig = {
       Restart = "always";
       Type = "simple";
     };
-    wantedBy = [ "graphical-session.target" ];
+    wantedBy = ["graphical-session.target"];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -296,5 +289,4 @@ in
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

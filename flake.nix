@@ -6,13 +6,11 @@
   #   trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   # };
 
-
   inputs = {
     # Nix ecosystem
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default-linux";
-
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -33,7 +31,7 @@
 
     # NoteBook FanControl (nbfc)
     nbfc-linux = {
-      url = "github:ibrahim-akrab/nbfc-linux";  # my fork without qt gui (broken on master)
+      url = "github:nbfc-linux/nbfc-linux";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -45,7 +43,6 @@
     #     systems.follows = "systems";
     #   };
     # };
-
   };
 
   outputs = {
