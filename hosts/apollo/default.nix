@@ -26,6 +26,7 @@ in {
     # Secure boot configuration
     bootspec.enable = true;
     loader.systemd-boot.enable = lib.mkForce false;
+    loader.systemd-boot.configurationLimit = 5;
     lanzaboote = {
       enable = true;
       pkiBundle = "/etc/secureboot";
@@ -180,7 +181,6 @@ in {
     wget
     git
     wluma
-    tpm2-tss
     (writeShellScriptBin "persist" ''
       dir="/persist/$(dirname $1)"
       sudo mkdir -p $dir
