@@ -9,7 +9,7 @@
   ...
 }: let
   hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/"; # mkpasswd -m sha-512
-  sshkeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-deskto"];
+  sshkeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-desktop"];
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -24,9 +24,12 @@ in {
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+    # Secure boot configuration
+    bootspec.enable = true;
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
@@ -148,10 +151,11 @@ in {
     extraGroups = ["wheel" "networkmanager" "tty" "video"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = sshkeys;
     hashedPassword = hashedPassword;
-    # packages = with pkgs; [
-    #   firefox
-    #   tree
-    # ];
+    packages = with pkgs; [
+      firefox
+      tree
+      lazygit
+    ];
   };
   users.users.root = {
     hashedPassword = hashedPassword;
@@ -165,6 +169,7 @@ in {
     wget
     git
     wluma
+    tpm2-tss
     (writeShellScriptBin "persist" ''
       dir="/persist/$(dirname $1)"
       sudo mkdir -p $dir
@@ -211,6 +216,7 @@ in {
       "/var/lib/nixos"
       "/var/lib/fprint"
       "/var/lib/systemd/backlight"
+      "/etc/secureboot"
     ];
     files = [
       "/etc/machine-id"
