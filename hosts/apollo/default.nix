@@ -27,6 +27,7 @@ in {
     bootspec.enable = true;
     loader.systemd-boot.enable = lib.mkForce false;
     loader.systemd-boot.configurationLimit = 5;
+    loader.timeout = 2;
     lanzaboote = {
       enable = true;
       pkiBundle = "/etc/secureboot";
@@ -75,6 +76,7 @@ in {
         done
 
         btrfs subvolume create /btrfs_tmp/root
+        btrfs subvolume delete /btrfs_tmp/root_blank
         btrfs subvolume snapshot -r /btrfs_tmp/root /btrfs_tmp/root_blank
 
         umount /btrfs_tmp
