@@ -22,7 +22,6 @@ in {
     inputs.hardware.nixosModules.common-pc-laptop-ssd
   ];
 
-  # Use the systemd-boot EFI boot loader.
   boot = {
     # Secure boot configuration
     bootspec.enable = true;
@@ -36,12 +35,24 @@ in {
 
     kernelParams = ["resume_offset=533760"];
     resumeDevice = "/dev/disk/by-label/nixos";
-
-    # delete root on boot
-    initrd = {
-      enable = true;
-      supportedFilesystems = ["btrfs"];
-      postResumeCommands = lib.mkAfter ''
+    # use initrd systemd services to make use of tpm backed full disk encryption
+    # using `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 /dev/nvme0n1p2`
+    initrd.systemd.enable = true;
+    initrd.systemd.services.rollback = {
+      description = "Rollback BTRFS root subvolume to a pristine state";
+      wantedBy = [
+        "initrd.target"
+      ];
+      after = [
+        # LUKS/TPM process
+        "cryptsetup.target"
+      ];
+      before = [
+        "sysroot.mount"
+      ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
         mkdir /btrfs_tmp
         mount /dev/mapper/crypted /btrfs_tmp
         if [[ -e /btrfs_tmp/root ]]; then
@@ -63,7 +74,7 @@ in {
         done
 
         btrfs subvolume create /btrfs_tmp/root
-        btrfs subvolume snapshot -r /btrfs_tmp/root /btrfs/root-blank
+        btrfs subvolume snapshot -r /btrfs_tmp/root /btrfs_tmp/root_blank
 
         umount /btrfs_tmp
         rmdir /btrfs_tmp
@@ -188,7 +199,7 @@ in {
 
       set -euo pipefail
 
-      OLD_TRANSID=$(sudo btrfs subvolume find-new /btrfs_tmp/root-blank 9999999)
+      OLD_TRANSID=$(sudo btrfs subvolume find-new /btrfs_tmp/root_blank 9999999)
       OLD_TRANSID=$(cut -d' ' -f4- <<< "$OLD_TRANSID")
 
       sudo btrfs subvolume find-new "/btrfs_tmp/root" "$OLD_TRANSID" |
