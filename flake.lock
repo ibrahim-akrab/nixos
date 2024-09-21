@@ -57,6 +57,21 @@
         "type": "github"
       }
     },
+    "flake-compat_2": {
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -196,6 +211,26 @@
         "type": "github"
       }
     },
+    "mixrank": {
+      "inputs": {
+        "flake-compat": "flake-compat_2",
+        "nixpkgs_latest": "nixpkgs_latest",
+        "nixpkgs_old": "nixpkgs_old"
+      },
+      "locked": {
+        "lastModified": 1726944447,
+        "narHash": "sha256-AGbr17NfQmtpNGwWQGQMA4/PlKiulYDAWho0POzcAcw=",
+        "ref": "refs/heads/master",
+        "rev": "ce523beb7ee0021325c9be241100bc9a3ea1ac54",
+        "revCount": 65834,
+        "type": "git",
+        "url": "ssh://git@gitlab.com/mixrank/mixrank"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@gitlab.com/mixrank/mixrank"
+      }
+    },
     "nbfc-linux": {
       "inputs": {
         "nixpkgs": [
@@ -265,6 +300,39 @@
         "type": "github"
       }
     },
+    "nixpkgs_latest": {
+      "locked": {
+        "lastModified": 1720492477,
+        "narHash": "sha256-PV6LKJpj43tuKAMEfmXiKZjlOW1IqZORUJ8WYcdLtGE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "64f145f456b7a3953f191cad9e257cd88412044e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "64f145f456b7a3953f191cad9e257cd88412044e",
+        "type": "github"
+      }
+    },
+    "nixpkgs_old": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1568853802,
+        "narHash": "sha256-eFyFVDVExwB1aGHVmemgh57EAcTs5rekWhlPnxAowu8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2c906666e54c9f050b4a25142b4ff0e73c9b7dcc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2c906666e54c9f050b4a25142b4ff0e73c9b7dcc",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -299,6 +367,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
+        "mixrank": "mixrank",
         "nbfc-linux": "nbfc-linux",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable_2",

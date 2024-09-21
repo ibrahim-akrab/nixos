@@ -142,7 +142,6 @@ in {
 
   # nix configuration
   nix = {
-    package = pkgs.nixVersions.nix_2_22;
     settings = {
       trusted-users = [
         "root"
@@ -229,6 +228,7 @@ in {
       "/var/lib/NetworkManager"
       "/var/lib/nixos"
       "/var/lib/fprint"
+      "/var/lib/zerotier-one"
       "/var/lib/bluetooth"
       "/var/lib/systemd/backlight"
       "/etc/secureboot"
@@ -239,6 +239,7 @@ in {
       "/etc/ssh/ssh_host_ed25519_key.pub"
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
+      "/root/.aws/credentials"
     ];
   };
 

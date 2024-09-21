@@ -41,6 +41,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # MixRank configuration module
+    mixrank.url = "git+ssh://git@gitlab.com/mixrank/mixrank";
+
     # hyprland
     # hyprland = {
     #   url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -98,6 +101,7 @@
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
           inputs.lanzaboote.nixosModules.lanzaboote
+	  inputs.mixrank.nixosModules.dev-machine
         ];
       };
     };
