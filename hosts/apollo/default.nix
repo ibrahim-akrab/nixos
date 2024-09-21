@@ -229,6 +229,7 @@ in {
       "/var/lib/NetworkManager"
       "/var/lib/nixos"
       "/var/lib/fprint"
+      "/var/lib/bluetooth"
       "/var/lib/systemd/backlight"
       "/etc/secureboot"
     ];
@@ -271,6 +272,8 @@ in {
   services.fprintd.enable = true;
   services.hardware.bolt.enable = true;
   hardware.sensor.iio.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
 
