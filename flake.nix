@@ -101,7 +101,7 @@
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
           inputs.lanzaboote.nixosModules.lanzaboote
-	  inputs.mixrank.nixosModules.dev-machine
+          inputs.mixrank.nixosModules.dev-machine
         ];
       };
     };

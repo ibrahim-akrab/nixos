@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   # Better scheduling for CPU cycles - thanks System76!!!
   services.system76-scheduler.settings.cfsProfiles.enable = true;
 
@@ -24,6 +25,4 @@
 
   # Enable thermald (only necessary if on Intel CPUs)
   services.thermald.enable = true;
-
 }
-

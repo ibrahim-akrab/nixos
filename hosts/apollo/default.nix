@@ -256,6 +256,10 @@ in {
     wantedBy = ["graphical-session.target"];
   };
 
+  # Fix wifi not working after suspend
+  powerManagement.powerDownCommands = "${pkgs.kmod}/bin/modprobe -r iwlmvm iwlwifi";
+  powerManagement.resumeCommands = "${pkgs.kmod}/bin/modprobe iwlmvm iwlwifi";
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.hyprland = {
