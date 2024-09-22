@@ -22,7 +22,8 @@ My nixos configuration used for setting up my laptop & desktop
 	- [x] automatically adjust screen brightness according to the light sensor using [wluma](https://github.com/maximbaz/wluma "wluma")
 	- [x] custom battery charging threshold in linux (inspired by MSI dragon center)
 	- [ ] fix audio muted on boot
-	- [ ] fix wi-fi not working after suspend
+	- [x] fix wi-fi not working after suspend
+    - [x] bluetooth
 	
 	
 - [ ] desktop setup:
