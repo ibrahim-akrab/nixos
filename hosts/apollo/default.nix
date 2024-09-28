@@ -221,6 +221,7 @@ in {
       done
     '')
   ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
