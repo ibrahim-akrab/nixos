@@ -16,7 +16,7 @@
 
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -102,6 +102,16 @@
           inputs.impermanence.nixosModules.impermanence
           inputs.lanzaboote.nixosModules.lanzaboote
           inputs.mixrank.nixosModules.dev-machine
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ibrahim = {
+              imports = [
+                ./home-manager/home.nix
+              ];
+            };
+          }
         ];
       };
     };

@@ -57,21 +57,6 @@
         "type": "github"
       }
     },
-    "flake-compat_2": {
-      "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -164,7 +149,6 @@
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -213,16 +197,15 @@
     },
     "mixrank": {
       "inputs": {
-        "flake-compat": "flake-compat_2",
         "nixpkgs_latest": "nixpkgs_latest",
         "nixpkgs_old": "nixpkgs_old"
       },
       "locked": {
-        "lastModified": 1726944447,
-        "narHash": "sha256-AGbr17NfQmtpNGwWQGQMA4/PlKiulYDAWho0POzcAcw=",
+        "lastModified": 1728642360,
+        "narHash": "sha256-nP4rDxy5LAD/2LRkFlICnG6cFaXv9/yBggXTOXKtiYM=",
         "ref": "refs/heads/master",
-        "rev": "ce523beb7ee0021325c9be241100bc9a3ea1ac54",
-        "revCount": 65834,
+        "rev": "18fe80c81fc5a4167ac40701558ef6d43aa1a191",
+        "revCount": 66518,
         "type": "git",
         "url": "ssh://git@gitlab.com/mixrank/mixrank"
       },
