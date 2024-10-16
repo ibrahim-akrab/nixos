@@ -16,12 +16,12 @@ My nixos configuration used for setting up my laptop & desktop
 - [ ] setup home-manager to work with impermenance (as nix module) and standalone for on-the-fly user setup
 
 
-- [ ] laptop setup:
+- [x] laptop setup:
     - [x] fingerprint reader
     - [x] light sensor
 	- [x] automatically adjust screen brightness according to the light sensor using [wluma](https://github.com/maximbaz/wluma "wluma")
 	- [x] custom battery charging threshold in linux (inspired by MSI dragon center)
-	- [ ] fix audio muted on boot
+	- [x] fix audio muted on boot
 	- [x] fix wi-fi not working after suspend
     - [x] bluetooth
 	
