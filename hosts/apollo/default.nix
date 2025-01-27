@@ -19,7 +19,6 @@ in {
     ./laptop.nix
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-pc-laptop
-    inputs.hardware.nixosModules.common-pc-laptop-acpi_call
     inputs.hardware.nixosModules.common-pc-laptop-ssd
   ];
 
@@ -142,11 +141,8 @@ in {
 
   # nix configuration
   nix = {
+    package = pkgs.nixVersions.nix_2_24;
     settings = {
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
       auto-optimise-store = lib.mkDefault true;
       experimental-features = [
         "nix-command"

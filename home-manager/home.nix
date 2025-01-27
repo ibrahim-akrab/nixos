@@ -32,7 +32,8 @@
     vim
     wget
     git
-    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
