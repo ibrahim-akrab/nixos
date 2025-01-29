@@ -114,6 +114,27 @@
           }
         ];
       };
+      # Similar to Apollo but using zfs instead of btrfs
+      apollo2 = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/apollo2
+          inputs.disko.nixosModules.disko
+          inputs.impermanence.nixosModules.impermanence
+          inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.mixrank.nixosModules.dev-machine
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ibrahim = {
+              imports = [
+                ./home-manager/home.nix
+              ];
+            };
+          }
+        ];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
