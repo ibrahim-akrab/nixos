@@ -123,10 +123,7 @@
         };
       };
     };
-
   };
-
-
 
   fileSystems."/persist".neededForBoot = true;
 }
