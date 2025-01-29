@@ -35,62 +35,31 @@
 		  type = "zfs";
                   pool = "zroot";
 		};
-						  type = "btrfs";
-						  extraArgs = ["-L" "nixos" "-f"];
-						  subvolumes = {
-						    "/root" = {
-						      mountpoint = "/";
-						      mountOptions = ["compress=zstd" "noatime"];
-						    };
-						    "/home" = {
-						      mountpoint = "/home";
-						      mountOptions = ["compress=zstd" "noatime"];
-						    };
-						    "/nix" = {
-						      mountpoint = "/nix";
-						      mountOptions = ["compress=zstd" "noatime"];
-						    };
-						    "/persist" = {
-						      mountpoint = "/persist";
-						      mountOptions = ["compress=zstd" "noatime"];
-						    };
-						    "/log" = {
-						      mountpoint = "/log";
-						      mountOptions = ["compress=zstd" "noatime"];
-						    };
-						    "/swap" = {
-						      mountpoint = "/.swapvol";
-						      swap.swapfile.size = "32G";
-						    };
-						  };
               };
             };
           };
         };
       };
     };
-  };
-
-
-  zpool = {
-    zroot = {
-      type = "zpool";
-      mode = mkIf cfg.zfs.root.mirror "mirror";
-      rootFsOptions = {
-        canmount = "off";
-        checksum = "edonr";
-        compression = "zstd";
-        dnodesize = "auto";
-        mountpoint = "none";
-        normalization = "formD";
-        relatime = "on";
-        "com.sun:auto-snapshot" = "false";
-      };
-      options = {
-        ashift = "12";
-        autotrim = "on";
-      };
-      datasets = {
+    zpool = {
+      zroot = {
+        type = "zpool";
+        rootFsOptions = {
+          canmount = "off";
+          checksum = "edonr";
+          compression = "zstd";
+          dnodesize = "auto";
+          mountpoint = "none";
+          normalization = "formD";
+          relatime = "on";
+          xattr = "sa";
+          "com.sun:auto-snapshot" = "false";
+        };
+        options = {
+          ashift = "12";
+          autotrim = "on";
+        };
+        datasets = {
           # zfs uses cow free space to delete files when the disk is completely filled
           reserved = {
             options = {
@@ -137,7 +106,7 @@
             mountpoint = "/";
             postCreateHook = "zfs snapshot zroot/root@empty";
           };
- 	  var-log = {
+          var-log = {
             type = "zfs_fs";
             options.mountpoint = "legacy";
             options."com.sun:auto-snapshot" = "false";
@@ -151,10 +120,13 @@
             mountpoint = "/var/lib";
             postCreateHook = "zfs snapshot zroot/var-lib@empty";
           };
-
         };
       };
     };
+
+  };
+
+
 
   fileSystems."/persist".neededForBoot = true;
 }

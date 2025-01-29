@@ -29,13 +29,14 @@ in {
     bootspec.enable = true;
     # loader.systemd-boot.enable = lib.mkForce false; # TODO: re-enable systemd-boot
     loader.systemd-boot.configurationLimit = 5;
+    loader.grub.device = "nodev";
     loader.timeout = 2;
     lanzaboote = {
       enable = false; # TODO: re-enable lanzeboote
       pkiBundle = "/etc/secureboot";
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     kernelPatches = lib.singleton {
       name = "config";
       patch = null;
@@ -43,6 +44,14 @@ in {
         ACPI_DEBUG = yes;
       };
     };
+    kernelParams = [ "nohibernate" "zfs.zfs_arc_max=17179869184" ];
+    supportedFilesystems = [ "vfat" "zfs" ];
+    zfs = {
+      devNodes = "/dev/disk/by-id";
+      forceImportAll = true;
+      requestEncryptionCredentials = true;
+    };
+    
 
     # use initrd systemd services to make use of tpm backed full disk encryption
     # using `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 /dev/nvme0n1p2`
@@ -68,6 +77,7 @@ in {
   };
 
   networking.hostName = "apollo"; # Define your hostname.
+  networking.hostId = "4956d89d"; # Required by zfs, set to `head -c 8 /etc/machine-id`
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -105,6 +115,12 @@ in {
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+
+  # Enable zfs scrub and trimming
+  services.zfs = {
+    autoScrub.enable = true;
+    trim.enable = true;
+  };
 
   # Enable sound with pipewire
   security.rtkit.enable = true;
