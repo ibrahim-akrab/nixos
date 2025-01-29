@@ -10,6 +10,17 @@
 }: let
   hashedPassword = "$6$bHLwBWJR3ymg.Yo2$eqX0cXWWpeN2UKzpHZAPBEVFpm1S9EVUw2uX8kyS6uFV./o3SRFgqBP7UKUsLKJ3T7HtLDPwWugM/rlHalel4/"; # mkpasswd -m sha-512
   sshkeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAey37St4eX4Y7Em3tW0L8jFnQvEWilcbHQxeqkB9Yf+ ibrahim@ibrahim-desktop"];
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+  ) pkgs.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -27,7 +38,7 @@ in {
   boot = {
     # Secure boot configuration
     bootspec.enable = true;
-    # loader.systemd-boot.enable = lib.mkForce false; # TODO: re-enable systemd-boot
+    loader.systemd-boot.enable = lib.mkForce true; # TODO: re-enable systemd-boot
     loader.systemd-boot.configurationLimit = 5;
     loader.grub.device = "nodev";
     loader.timeout = 2;
@@ -36,7 +47,8 @@ in {
       pkiBundle = "/etc/secureboot";
     };
 
-    # kernelPackages = pkgs.linuxPackages_latest;
+    # Note this might jump back and forth as kernels are added or removed.
+    kernelPackages = latestKernelPackage;
     kernelPatches = lib.singleton {
       name = "config";
       patch = null;
