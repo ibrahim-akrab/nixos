@@ -84,6 +84,7 @@
   programs.kitty = {
     enable = true;
     font.name = "FiraCode";
+    font.size = 12;
     shellIntegration.enableBashIntegration = true;
     themeFile = "Catppuccin-Mocha";
   };
