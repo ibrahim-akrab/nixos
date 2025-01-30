@@ -51,8 +51,8 @@
                       mountpoint = "/persist";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
-                    "/log" = {
-                      mountpoint = "/log";
+                    "/var/log" = {
+                      mountpoint = "/var/log";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
                     "/swap" = {
