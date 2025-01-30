@@ -229,6 +229,7 @@ in {
       "/var/lib/zerotier-one"
       "/var/lib/bluetooth"
       "/var/lib/systemd/backlight"
+      "/var/lib/sbctl"
       "/etc/secureboot"
     ];
     files = [
@@ -237,7 +238,6 @@ in {
       "/etc/ssh/ssh_host_ed25519_key.pub"
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
-      "/root/.aws/credentials"
     ];
   };
 
