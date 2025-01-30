@@ -25,12 +25,12 @@ in {
   boot = {
     # Secure boot configuration
     bootspec.enable = true;
-    loader.systemd-boot.enable = lib.mkForce true;
+    loader.systemd-boot.enable = lib.mkForce false;
     loader.systemd-boot.configurationLimit = 5;
     loader.timeout = 2;
     lanzaboote = {
-      enable = false;
-      pkiBundle = "/etc/secureboot";
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
@@ -230,7 +230,6 @@ in {
       "/var/lib/bluetooth"
       "/var/lib/systemd/backlight"
       "/var/lib/sbctl"
-      "/etc/secureboot"
     ];
     files = [
       "/etc/machine-id"
@@ -238,6 +237,8 @@ in {
       "/etc/ssh/ssh_host_ed25519_key.pub"
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
+      #"/var/lib/systemd/tpm2-srk-public-key.pem"
+      #"/var/lib/systemd/tpm2-srk-public-key.tpm2b_public"
     ];
   };
 
