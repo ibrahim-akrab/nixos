@@ -25,15 +25,22 @@ in {
   boot = {
     # Secure boot configuration
     bootspec.enable = true;
-    loader.systemd-boot.enable = lib.mkForce false;
+    loader.systemd-boot.enable = lib.mkForce true;
     loader.systemd-boot.configurationLimit = 5;
     loader.timeout = 2;
     lanzaboote = {
-      enable = true;
+      enable = false;
       pkiBundle = "/etc/secureboot";
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelPatches = lib.singleton {
+      name = "config";
+      patch = null;
+      extraStructuredConfig = with lib.kernel; {
+        ACPI_DEBUG = yes;
+      };
+    };
 
     kernelParams = ["resume_offset=533760"];
     resumeDevice = "/dev/disk/by-label/nixos";
@@ -307,5 +314,5 @@ in {
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
