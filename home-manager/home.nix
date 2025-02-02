@@ -89,6 +89,7 @@
     font.size = 12;
     shellIntegration.enableBashIntegration = true;
     themeFile = "Catppuccin-Mocha";
+    settings.confirm_os_window_close = 0;
   };
   programs.tmux = {
     enable = true;
@@ -102,9 +103,6 @@
       setw -g pane-base-index 1
 
       set -g renumber-windows on
-
-
-
     '';
     plugins = with pkgs.tmuxPlugins; [
       pain-control
