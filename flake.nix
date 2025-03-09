@@ -135,6 +135,25 @@
           }
         ];
       };
+      # Desktop Workstation
+      ares = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/ares
+          inputs.mixrank.nixosModules.dev-machine
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ibrahim = {
+              imports = [
+                ./home-manager/home.nix
+              ];
+            };
+          }
+
+        ];
+      }
     };
 
     # Standalone home-manager configuration entrypoint
