@@ -11,6 +11,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default-linux";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -153,7 +154,28 @@
           }
 
         ];
-      }
+      };
+      attis = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/attis
+          inputs.nixos-wsl.nixosModules.default
+          inputs.mixrank.nixosModules.dev-machine
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ibrahim = {
+              imports = [
+                ./home-manager/home.nix
+              ];
+            };
+          }
+
+        ];
+      };
+
     };
 
     # Standalone home-manager configuration entrypoint
