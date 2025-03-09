@@ -63,7 +63,7 @@ in {
       forceImportAll = true;
       requestEncryptionCredentials = true;
     };
-    
+
 
     # use initrd systemd services to make use of tpm backed full disk encryption
     # using `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 /dev/nvme0n1p2`
@@ -88,7 +88,7 @@ in {
     };
   };
 
-  networking.hostName = "apollo"; # Define your hostname.
+  networking.hostName = "aristaeus"; # Define your hostname.
   networking.hostId = "4956d89d"; # Required by zfs, set to `head -c 8 /etc/machine-id`
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

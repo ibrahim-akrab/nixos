@@ -88,12 +88,12 @@
     nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
+    # homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # Main desktop
+      # Laptop
       apollo = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
@@ -114,11 +114,11 @@
           }
         ];
       };
-      # Similar to Apollo but using zfs instead of btrfs
-      apollo2 = nixpkgs.lib.nixosSystem {
+      # Similar to Apollo but using zfs instead of btrfs (there's an easter egg here)
+      aristaeus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./hosts/apollo2
+          ./hosts/aristaeus
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
           inputs.lanzaboote.nixosModules.lanzaboote
