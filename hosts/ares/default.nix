@@ -55,13 +55,14 @@
   services.xserver.enable = true;
 
 
-  # Enable Docker
-  virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "ibrahim" ];
-
   # Enable Virtualbox
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "ibrahim" ];
+  programs.virt-manager.enable = true;
+
+  users.groups.libvirtd.members = ["ibrahim"];
+
+  virtualisation.libvirtd.enable = true;
+
+  virtualisation.spiceUSBRedirection.enable = true;
 
 
   # Enable the KDE Plasma Desktop Environment.
@@ -181,7 +182,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    docker-compose
 
     git
     droidcam
@@ -237,7 +237,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
