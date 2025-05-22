@@ -25,7 +25,6 @@
     slack
     telegram-desktop
 
-    firefox
     tree
     cht-sh
     lazygit
@@ -143,8 +142,18 @@
       }
     ];
   };
+  programs.librewolf = {
+    enable = true;
+    settings = {
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.cookies" = false;
+      "security.tls.version.enable-deprecated" = true;
+      "security.tls.version.min" = 1;
+      "security.ssl.require_safe_negotiation" = false;
+    };
+   };
 
-services.kdeconnect.enable = true;
+  services.kdeconnect.enable = true;
 
   fonts.fontconfig.enable = true;
 
