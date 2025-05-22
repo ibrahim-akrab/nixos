@@ -15,6 +15,8 @@ in {
   # wsl-specific settings
   wsl.enable = true;
   wsl.defaultUser = "ibrahim";
+  wsl.wslConf.network.generateHosts = false;
+  wsl.wslConf.network.generateResolvConf = false;
 
   networking.hostName = "attis"; # Define your hostname.
   # Pick only one of the below networking options.
