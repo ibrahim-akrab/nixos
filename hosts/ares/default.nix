@@ -32,6 +32,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # get around issue nixos/nixpkgs#180175
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   # Set your time zone.
   time.timeZone = "Africa/Cairo";
