@@ -152,7 +152,6 @@
               ];
             };
           }
-
         ];
       };
       attis = nixpkgs.lib.nixosSystem {
@@ -168,7 +167,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.ibrahim = {
               imports = [
-                ({ config, pkgs, ... }: import ./home-manager/home.nix { inherit config pkgs; isWsl = true; })
+                ./home-manager/home.nix
               ];
             };
           }
