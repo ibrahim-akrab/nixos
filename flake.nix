@@ -168,7 +168,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.ibrahim = {
               imports = [
-                ./home-manager/home.nix
+                ({ config, pkgs, ... }: import ./home-manager/home.nix { inherit config pkgs; isWsl = true; })
               ];
             };
           }

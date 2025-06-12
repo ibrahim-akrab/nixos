@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  isWsl ? false,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -51,7 +52,7 @@
   ];
 
   programs.vscode = {
-    enable = true;
+    enable = !isWsl;	# disable it if inside wsl (since it falls back to windows native version)
     extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       vscodevim.vim
