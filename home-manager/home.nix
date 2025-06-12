@@ -81,7 +81,10 @@
   # Commandline Tools
   programs.htop.enable = true;
   programs.bat.enable = true;
-  programs.lsd.enable = true;
+  programs.lsd = {
+    enable = true;
+    enableBashIntegration = true;
+  };
   programs.kitty = {
     enable = true;
     font.name = "FiraCode";
@@ -195,10 +198,10 @@
   home.shellAliases = {
     ".." = "cd ..";
     "..." = "cd ../..";
-    "ls" = "lsd";
-    "l" = "lsd";
-    "ll" = "lsd -l";
-    "la" = "lsd -la";
+    #"ls" = "lsd";
+    #"l" = "lsd";
+    #"ll" = "lsd -l";
+    #"la" = "lsd -la";
   };
 
   # Let Home Manager install and manage itself.
