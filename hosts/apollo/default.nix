@@ -52,12 +52,16 @@ in {
       wantedBy = [
         "initrd.target"
       ];
+      requires = [ "initrd-root-device.target" ];
       after = [
         # LUKS/TPM process
         "cryptsetup.target"
+	"initrd-root-device.target"
+	"local-fs-pre.target"
       ];
       before = [
         "sysroot.mount"
+        "create-needed-for-boot-dirs.service"
       ];
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";
