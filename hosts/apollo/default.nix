@@ -34,13 +34,13 @@ in {
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelPatches = lib.singleton {
-      name = "config";
-      patch = null;
-      extraStructuredConfig = with lib.kernel; {
-        ACPI_DEBUG = yes;
-      };
-    };
+    # kernelPatches = lib.singleton {
+    #   name = "config";
+    #   patch = null;
+    #   extraStructuredConfig = with lib.kernel; {
+    #     ACPI_DEBUG = yes;
+    #   };
+    # };
 
     kernelParams = ["resume_offset=533760"];
     resumeDevice = "/dev/disk/by-label/nixos";
