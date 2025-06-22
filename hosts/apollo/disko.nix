@@ -31,7 +31,7 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
-                  crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+                  crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10" "password-echo=no"];
                   # keyFile = "/tmp/secret.key";
                 };
                 # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
