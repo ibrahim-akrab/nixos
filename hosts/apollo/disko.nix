@@ -1,14 +1,15 @@
 {
   disko.devices = {
     disk = {
-      main = {
+      nvme0n1 = {
         type = "disk";
         device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              size = "1G";
+              label = "boot";
+              size = "512M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -21,6 +22,7 @@
             };
             luks = {
               size = "100%";
+              label = "luks";
               content = {
                 type = "luks";
                 name = "crypted";
@@ -28,6 +30,8 @@
                 #passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
                   allowDiscards = true;
+                  bypassWorkqueues = true;
+                  crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
                   # keyFile = "/tmp/secret.key";
                 };
                 # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
@@ -37,27 +41,28 @@
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                      postCreateHook = "btrfs subvolume snapshot -r /mnt/root /mnt/root_blank"
                     };
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["subvol=home" "compress=zstd" "noatime"];
                     };
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
                     };
                     "/persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["subvol=persist" "compress=zstd" "noatime"];
                     };
-                    "/var/log" = {
+                    "/log" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["subvol=log" "compress=zstd" "noatime"];
                     };
                     "/swap" = {
                       mountpoint = "/.swapvol";
-                      swap.swapfile.size = "32G";
+                      swap.swapfile.size = "64G";
                     };
                   };
                 };
@@ -70,4 +75,5 @@
   };
 
   fileSystems."/persist".neededForBoot = true;
+  fileSystems."/var/log".neededForBoot = true;
 }
