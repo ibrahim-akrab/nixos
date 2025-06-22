@@ -270,6 +270,11 @@ in {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 30d --keep 3";
+  };
 
   # List services that you want to enable:
   services.acpid.enable = true;
