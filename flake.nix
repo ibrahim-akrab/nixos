@@ -36,12 +36,6 @@
     # impermenance
     impermanence.url = "github:nix-community/impermanence";
 
-    # NoteBook FanControl (nbfc)
-    nbfc-linux = {
-      url = "github:nbfc-linux/nbfc-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # MixRank configuration module
     mixrank.url = "git+ssh://git@gitlab.com/mixrank/mixrank";
 
