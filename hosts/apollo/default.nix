@@ -183,6 +183,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    lm_sensors
     wluma
     (writeShellScriptBin "persist" ''
       dir="/persist/$(dirname $1)"
@@ -284,6 +285,7 @@ in {
   services.acpid.enable = true;
   services.fprintd.enable = true;
   services.hardware.bolt.enable = true;
+  services.fwupd.enable = true;
   hardware.sensor.iio.enable = true;
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
