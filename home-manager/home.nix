@@ -52,7 +52,7 @@
   ];
 
   programs.vscode = {
-    enable = !osConfig.wsl.enable or true;	# disable it if inside wsl (since it falls back to windows native version)
+    enable = !(osConfig.wsl.enable or false);	# disable it if inside wsl (since it falls back to windows native version)
     profiles.default.extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       vscodevim.vim
