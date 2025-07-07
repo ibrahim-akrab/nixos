@@ -102,7 +102,7 @@ in {
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  time.timeZone = "Africa/Cairo";
+  time.timeZone = "Asia/Manila";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -275,6 +275,12 @@ in {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
   programs.kdeconnect.enable = true;
   programs.nh = {
     enable = true;
@@ -288,8 +294,12 @@ in {
   services.hardware.bolt.enable = true;
   services.fwupd.enable = true;
   hardware.sensor.iio.enable = true;
+  # Enable bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
+  hardware.enableAllFirmware = true;
+  hardware.firmware = [ pkgs.firmwareLinuxNonfree ];
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
 
