@@ -189,6 +189,8 @@ in {
   environment.systemPackages = with pkgs; [
     lm_sensors
     wluma
+    wayland-utils # Wayland utilities
+    wl-clipboard # Command-line copy/paste utilities for Wayland
     (writeShellScriptBin "persist" ''
       dir="/persist/$(dirname $1)"
       sudo mkdir -p $dir
