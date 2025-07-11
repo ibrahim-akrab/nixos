@@ -188,7 +188,6 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     lm_sensors
-    wluma
     wayland-utils # Wayland utilities
     wl-clipboard # Command-line copy/paste utilities for Wayland
     (writeShellScriptBin "persist" ''
@@ -253,18 +252,6 @@ in {
     ];
   };
 
-  systemd.user.services.wluma = {
-    description = "Adjusting screen brightness based on screen contents and amount of ambient light";
-    enable = true;
-    after = ["graphical-session.target"];
-    partOf = ["graphical-session.target"];
-    script = "${pkgs.wluma}/bin/wluma";
-    serviceConfig = {
-      Restart = "always";
-      Type = "simple";
-    };
-    wantedBy = ["graphical-session.target"];
-  };
 
   # Fix wifi not working after suspend
   powerManagement.powerDownCommands = "${pkgs.kmod}/bin/modprobe -r iwlmld";
