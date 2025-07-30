@@ -55,12 +55,12 @@ in {
       wantedBy = [
         "initrd.target"
       ];
-      requires = [ "initrd-root-device.target" ];
+      requires = ["initrd-root-device.target"];
       after = [
         # LUKS/TPM process
         "cryptsetup.target"
-	"initrd-root-device.target"
-	"local-fs-pre.target"
+        "initrd-root-device.target"
+        "local-fs-pre.target"
       ];
       before = [
         "sysroot.mount"
@@ -102,7 +102,8 @@ in {
   networking.hostName = "apollo"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager = { # Easiest to use and most distros use this by default.
+  networking.networkmanager = {
+    # Easiest to use and most distros use this by default.
     enable = true;
     wifi.macAddress = "stable-ssid";
     ethernet.macAddress = "stable";
@@ -152,14 +153,8 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness"
-    ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-  '';
-
   # nix configuration
   nix = {
-    package = pkgs.nixVersions.nix_2_24;
     settings = {
       auto-optimise-store = lib.mkDefault true;
       experimental-features = [
@@ -256,7 +251,6 @@ in {
     ];
   };
 
-
   # Fix wifi not working after suspend
   powerManagement.powerDownCommands = "${pkgs.kmod}/bin/modprobe -r iwlmld";
   powerManagement.resumeCommands = "${pkgs.kmod}/bin/modprobe iwlmld";
@@ -278,12 +272,6 @@ in {
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-  programs.kdeconnect.enable = true;
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 30d --keep 3";
-  };
 
   # List services that you want to enable:
   services.acpid.enable = true;
@@ -296,7 +284,7 @@ in {
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
   hardware.enableAllFirmware = true;
-  hardware.firmware = [ pkgs.firmwareLinuxNonfree ];
+  hardware.firmware = [pkgs.firmwareLinuxNonfree];
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
 

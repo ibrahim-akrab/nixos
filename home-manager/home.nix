@@ -52,7 +52,7 @@
   ];
 
   programs.vscode = {
-    enable = !(osConfig.wsl.enable or false);	# disable it if inside wsl (since it falls back to windows native version)
+    enable = !(osConfig.wsl.enable or false); # disable it if inside wsl (since it falls back to windows native version)
     profiles.default.extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       vscodevim.vim
@@ -139,9 +139,16 @@
       "security.tls.version.min" = 1;
       "security.ssl.require_safe_negotiation" = false;
     };
-   };
+  };
 
   services.kdeconnect.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/ibrahim/nixos";
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 30d --keep 3";
+  };
 
   fonts.fontconfig.enable = true;
 
