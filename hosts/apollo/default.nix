@@ -236,13 +236,14 @@ in {
     hideMounts = true;
     directories = [
       "/etc/NetworkManager/system-connections"
+      "/var/cache/powertop"
+      "/var/lib/bluetooth"
+      "/var/lib/fprint"
       "/var/lib/NetworkManager"
       "/var/lib/nixos"
-      "/var/lib/fprint"
-      "/var/lib/zerotier-one"
-      "/var/lib/bluetooth"
-      "/var/lib/systemd/backlight"
       "/var/lib/sbctl"
+      "/var/lib/systemd/backlight"
+      "/var/lib/zerotier-one"
     ];
     files = [
       "/etc/machine-id"
