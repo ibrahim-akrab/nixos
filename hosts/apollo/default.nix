@@ -44,7 +44,7 @@ in {
 
     kernelParams = [
       "resume_offset=533760"
-      "intel_idle.max_cstate=1"
+      "intel_idle.max_cstate=6"
     ];
     resumeDevice = "/dev/disk/by-label/nixos";
     # use initrd systemd services to make use of tpm backed full disk encryption
