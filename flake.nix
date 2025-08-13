@@ -33,6 +33,9 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
     };
+    mixrank = {
+      url = "git+ssh://git@gitlab.com/mixrank/mixrank";
+    };
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };

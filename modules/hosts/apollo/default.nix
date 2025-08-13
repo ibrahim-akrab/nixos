@@ -16,7 +16,7 @@ let
       impermanence
       intel
       laptop
-      # mixrank
+      mixrank
       secure-boot
 
       # Users
