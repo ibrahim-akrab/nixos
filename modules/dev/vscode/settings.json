@@ -1,0 +1,214 @@
+{
+  "debug.console.fontSize": 15,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "editor.cursorSurroundingLines": 10,
+  "editor.fontFamily": "'FiraCode Nerd Font', 'Fira Code', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.guides.bracketPairs": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.rulers": [
+    {
+      "color": "#a86969",
+      "column": 120
+    }
+  ],
+  "explorer.confirmDelete": false,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "git.allowNoVerifyCommit": true,
+  "git.confirmNoVerifyCommit": false,
+  "git.confirmSync": false,
+  "git.inputValidation": true,
+  "git.openRepositoryInParentFolders": "never",
+  "gitlens.telemetry.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.fontSize": 15,
+  "vim.cursorStylePerMode.normal": "block-outline",
+  "vim.easymotion": true,
+  "vim.easymotionKeys": "qwertyuiopasdfghjklzxcvbnm",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "vim.highlightedyank.enable": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "C"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.gotoSymbol"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "o"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.files.newUntitledFile"
+      ]
+    },
+    {
+      "before": [
+        "<C-e>"
+      ],
+      "commands": [
+        "workbench.actions.view.toggleProblems"
+      ]
+    },
+    {
+      "before": [
+        "<C-t>"
+      ],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "commands": [
+        "workbench.action.navigateDown"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "commands": [
+        "workbench.action.navigateUp"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "commands": [
+        "workbench.action.navigateLeft"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "commands": [
+        "workbench.action.navigateRight"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "commands": [
+        "workbench.action.nextEditorInGroup"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "commands": [
+        "workbench.action.previousEditorInGroup"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "lineBreakInsert"
+      ],
+      "silent": true
+    }
+  ],
+  "vim.useCtrlKeys": true,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
+    }
+  ],
+  "window.commandCenter": true,
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vscode-icons"
+}
