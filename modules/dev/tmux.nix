@@ -10,7 +10,7 @@
         prefix = "C-a";
         extraConfig = ''
           bind C-a last-window
-          set -g base-index 0
+          set -g base-index 1
           setw -g pane-base-index 1
           set -g renumber-windows on
         '';
