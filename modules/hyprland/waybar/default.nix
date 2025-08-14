@@ -76,6 +76,7 @@
                   "8" = "8";
                   "9" = "9";
                   active = "󱓻";
+                  urgent = "󱨇";
                 };
                 persistent-workspaces = {
                   "1" = [ ];
