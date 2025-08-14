@@ -29,7 +29,6 @@ let
         home-manager.users.ibrahim.imports = with config.flake.modules.homeManager; [
           audio
           base
-          battery
           desktop
           dev
           hyprland

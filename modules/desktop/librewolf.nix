@@ -8,6 +8,7 @@
         "security.tls.version.enable-deprecated" = true;
         "security.tls.version.min" = 1;
         "security.ssl.require_safe_negotiation" = false;
+        "browser.tabs.inTitlebar" = 0;
       };
     };
   };

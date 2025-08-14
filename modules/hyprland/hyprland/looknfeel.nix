@@ -2,7 +2,6 @@
   flake.modules.homeManager.hyprland =
     {
       config,
-      pkgs,
       ...
     }:
     let
@@ -12,11 +11,7 @@
       activeBorder = hexToRgba config.colorScheme.palette.base0D "aa";
     in
     {
-      gtk.cursorTheme = {
-        package = pkgs.quintom-cursor-theme;
-        name = "Quintom_Ink";
-        size = 36;
-      };
+
       wayland.windowManager.hyprland.settings = {
         general = {
           gaps_in = 5;

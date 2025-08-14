@@ -42,7 +42,7 @@
         hex_result=$(printf '0x%X\n' "$result")
 
         # write value to embedded controller's register (0xD7)
-        sudo ${lib.getExe' pkgs.nbfc-linux "ec_probe"}/bin/ec_probe write 0xD7 "$hex_result"
+        sudo ${lib.getExe' pkgs.nbfc-linux "ec_probe"} write 0xD7 "$hex_result"
       '';
     in
     {
