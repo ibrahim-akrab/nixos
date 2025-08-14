@@ -10,6 +10,10 @@
       );
     in
     {
+
+      services.swayosd = {
+        enable = true;
+      };
       home.packages = with pkgs; [
         hyprshot
         hyprpicker
@@ -132,20 +136,22 @@
 
         bindel = [
           # Laptop multimedia keys for volume and LCD brightness
-          ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-          ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+          ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+          ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+          ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+          ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+          "SHIFT,XF86AudioRaiseVolume, exec, swayosd-client --input-volume raise"
+          "SHIFT,XF86AudioLowerVolume, exec, swayosd-client --input-volume lower"
+          ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+          ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
         ];
 
         bindl = [
           # Requires playerctl
-          ", XF86AudioNext, exec, playerctl next"
-          ", XF86AudioPause, exec, playerctl play-pause"
-          ", XF86AudioPlay, exec, playerctl play-pause"
-          ", XF86AudioPrev, exec, playerctl previous"
+          ", XF86AudioNext, exec, swayosd-client --playerctl next"
+          ", XF86AudioPause, exec, swayosd-client --playerctl pause"
+          ", XF86AudioPlay, exec, swayosd-client --playerctl play"
+          ", XF86AudioPrev, exec, swayosd-client --playerctl prev"
         ];
       };
     };

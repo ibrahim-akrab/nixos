@@ -16,7 +16,6 @@
         backgroundRgb = "rgb(${convert ", " palette.base00})";
         foregroundRgb = "rgb(${convert ", " palette.base05})";
         colored_bar_icons = [
-
           "<span color='#00ff6e'>▁</span>" # green
           "<span color='#4cff4c'>▂</span>" # yellow-green
           "<span color='#99ff29'>▃</span>" # lime
