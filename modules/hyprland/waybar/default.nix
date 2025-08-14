@@ -15,6 +15,17 @@
         convert = inputs.nix-colors.lib.conversions.hexToRGBString;
         backgroundRgb = "rgb(${convert ", " palette.base00})";
         foregroundRgb = "rgb(${convert ", " palette.base05})";
+        colored_bar_icons = [
+
+          "<span color='#00ff6e'>▁</span>" # green
+          "<span color='#4cff4c'>▂</span>" # yellow-green
+          "<span color='#99ff29'>▃</span>" # lime
+          "<span color='#e6ff05'>▄</span>" # yellow
+          "<span color='#ffd100'>▅</span>" # amber
+          "<span color='#ff8d00'>▆</span>" # orange
+          "<span color='#ff4900'>▇</span>" # red-orange
+          "<span color='#ff0500'>█</span>" # red
+        ];
       in
       {
         home.file = {
@@ -50,14 +61,12 @@
                 "clock"
               ];
               modules-right = [
-                # "custom/dropbox"
                 "tray"
                 "network"
                 "bluetooth"
                 "wireplumber"
                 "cpu"
                 "memory"
-                "power-profiles-daemon"
                 "battery"
               ];
               "hyprland/workspaces" = {
@@ -79,21 +88,20 @@
                   urgent = "󱨇";
                 };
                 persistent-workspaces = {
-                  "1" = [ ];
-                  "2" = [ ];
-                  "3" = [ ];
-                  "4" = [ ];
-                  "5" = [ ];
+                  "*" = 5;
                 };
               };
               cpu = {
-                interval = 5;
-                format = "󰍛";
+                interval = 1;
+                format = "{icon}󰍛";
+                format-icons = colored_bar_icons;
                 on-click = "kitty -e btop";
               };
               memory = {
-                format = "  ";
+                format = "{icon}  ";
                 on-click = "kitty -e btop";
+                format-icons = colored_bar_icons;
+                tooltip-format = "{used:0.1f}/{total:0.0f} GB ({percentage}%)";
 
               };
               clock = {
@@ -166,7 +174,10 @@
                 format = "󰂯";
                 format-disabled = "󰂲";
                 format-connected = "󰂱";
-                tooltip-format = "Devices connected: {num_connections}";
+
+                tooltip-format = "{num_connections} connected";
+                tooltip-format-connected = "{num_connections} connected\n\n{device_enumerate}";
+                tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
                 on-click = "blueman-manager";
               };
               wireplumber = {
@@ -188,25 +199,6 @@
               tray = {
                 spacing = 13;
               };
-              # power-profiles-daemon = {
-              #   format = "{icon}";
-              #   tooltip-format = "Power profile: {profile}";
-              #   tooltip = true;
-              #   format-icons = {
-              #     power-saver = "󰡳";
-              #     balanced = "󰊚";
-              #     performance = "󰡴";
-              #   };
-              # };
-              # "custom/dropbox" = {
-              #   format = "";
-              #   on-click = "nautilus ~/Dropbox";
-              #   exec = "dropbox-cli status";
-              #   return-type = "text";
-              #   interval = 5;
-              #   tooltip = true;
-              #   tooltip-format = "{}";
-              # };
             }
           ];
         };

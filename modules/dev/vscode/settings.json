@@ -41,170 +41,84 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<leader>",
-        "/"
-      ],
-      "commands": [
-        "editor.action.commentLine"
-      ]
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
     },
     {
-      "before": [
-        "<leader>",
-        "C"
-      ],
-      "commands": [
-        "workbench.action.closeOtherEditors"
-      ]
+      "before": ["<leader>", "C"],
+      "commands": ["workbench.action.closeOtherEditors"]
     },
     {
-      "before": [
-        "<leader>",
-        "c"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
+      "before": ["<leader>", "c"],
+      "commands": ["workbench.action.closeActiveEditor"]
     },
     {
-      "before": [
-        "<leader>",
-        "p"
-      ],
-      "commands": [
-        "workbench.action.showCommands"
-      ]
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
     },
     {
-      "before": [
-        "<leader>",
-        "s"
-      ],
-      "commands": [
-        "workbench.action.gotoSymbol"
-      ]
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
     },
     {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": [
-        "<leader>",
-        "o"
-      ],
-      "commands": [
-        "workbench.view.explorer"
-      ]
+      "before": ["<leader>", "o"],
+      "commands": ["workbench.view.explorer"]
     },
     {
-      "before": [
-        "<leader>",
-        "e"
-      ],
-      "commands": [
-        "workbench.view.explorer"
-      ]
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
     },
     {
-      "before": [
-        "<leader>",
-        "n"
-      ],
-      "commands": [
-        "workbench.action.files.newUntitledFile"
-      ]
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.files.newUntitledFile"]
     },
     {
-      "before": [
-        "<C-e>"
-      ],
-      "commands": [
-        "workbench.actions.view.toggleProblems"
-      ]
+      "before": ["<C-e>"],
+      "commands": ["workbench.actions.view.toggleProblems"]
     },
     {
-      "before": [
-        "<C-t>"
-      ],
-      "commands": [
-        "workbench.action.terminal.toggleTerminal"
-      ]
+      "before": ["<C-t>"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
     },
     {
-      "before": [
-        "<C-j>"
-      ],
-      "commands": [
-        "workbench.action.navigateDown"
-      ]
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.navigateDown"]
     },
     {
-      "before": [
-        "<C-k>"
-      ],
-      "commands": [
-        "workbench.action.navigateUp"
-      ]
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.navigateUp"]
     },
     {
-      "before": [
-        "<C-h>"
-      ],
-      "commands": [
-        "workbench.action.navigateLeft"
-      ]
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.navigateLeft"]
     },
     {
-      "before": [
-        "<C-l>"
-      ],
-      "commands": [
-        "workbench.action.navigateRight"
-      ]
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.navigateRight"]
     },
     {
-      "before": [
-        "L"
-      ],
-      "commands": [
-        "workbench.action.nextEditorInGroup"
-      ]
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditorInGroup"]
     },
     {
-      "before": [
-        "H"
-      ],
-      "commands": [
-        "workbench.action.previousEditorInGroup"
-      ]
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditorInGroup"]
     },
     {
-      "before": [
-        "K"
-      ],
-      "commands": [
-        "lineBreakInsert"
-      ],
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
       "silent": true
     }
   ],
   "vim.useCtrlKeys": true,
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<leader>",
-        "/"
-      ],
-      "commands": [
-        "editor.action.commentLine"
-      ]
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
     }
   ],
   "window.commandCenter": true,
