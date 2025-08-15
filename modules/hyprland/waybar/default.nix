@@ -206,11 +206,10 @@
                 orientation = "inherit";
                 drawer = {
                   transition-duration = 500;
-                  children-class = "not-power";
                   transition-left-to-right = false;
                 };
                 modules = [
-                  "custom/power"
+                  "custom/shutdown"
                   "custom/lock"
                   "custom/reboot"
                   "custom/sleep"
@@ -237,9 +236,9 @@
                 tooltip-format = "reboot";
                 on-click = "reboot";
               };
-              "custom/power" = {
-                format = " ";
-                tooltip-format = "power off";
+              "custom/shutdown" = {
+                format = "";
+                tooltip-format = "shutdown";
                 on-click = "shutdown now";
               };
               tray = {

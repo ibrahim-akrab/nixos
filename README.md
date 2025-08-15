@@ -14,6 +14,8 @@ My nixos configuration used for setting up my laptop & desktop
 # To-Do's:
 
 - [ ] setup home-manager to work with impermenance (as nix module) and standalone for on-the-fly user setup
+- [ ] add yubikey module with age encryption
+- [ ] add secrets management using age keys saved in yubikey
 
 - [x] laptop setup:
   - [x] fingerprint reader
