@@ -26,8 +26,12 @@
 #memory,
 #systemd-failed-units,
 #battery,
-.group,
-.custom,
+#group-power,
+#custom-lock,
+#custom-reboot,
+#custom-sleep,
+#custom-hibernate,
+#custom-poweroff,
 #clock {
   background-color: transparent;
   min-width: 12px;

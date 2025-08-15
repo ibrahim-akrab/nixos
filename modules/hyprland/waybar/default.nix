@@ -213,6 +213,7 @@
                   "custom/power"
                   "custom/lock"
                   "custom/reboot"
+                  "custom/sleep"
                   "custom/hibernate"
                 ];
               };
@@ -220,6 +221,11 @@
                 format = "⏼";
                 tooltip-format = "hibernate";
                 on-click = "systemctl hibernate";
+              };
+              "custom/sleep" = {
+                format = "󰒲";
+                tooltip-format = "sleep";
+                on-click = "systemctl hybrid-sleep";
               };
               "custom/lock" = {
                 format = "";
@@ -232,7 +238,7 @@
                 on-click = "reboot";
               };
               "custom/power" = {
-                format = "⏻";
+                format = " ";
                 tooltip-format = "power off";
                 on-click = "shutdown now";
               };
