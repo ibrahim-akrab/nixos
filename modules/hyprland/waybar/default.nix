@@ -66,7 +66,9 @@
                 "wireplumber"
                 "cpu"
                 "memory"
+                "systemd-failed-units"
                 "battery"
+                "group/group-power"
               ];
               "hyprland/workspaces" = {
                 on-click = "activate";
@@ -97,7 +99,7 @@
                 on-click = "kitty -e btop";
               };
               memory = {
-                format = "{icon}  ";
+                format = "{icon}";
                 on-click = "kitty -e btop";
                 format-icons = colored_bar_icons;
                 tooltip-format = "{used:0.1f}/{total:0.0f} GB ({percentage}%)";
@@ -107,6 +109,11 @@
                 format = "{:%A %I:%M %p}";
                 format-alt = "{:%d %B W%V %Y}";
                 tooltip = false;
+              };
+
+              systemd-failed-units = {
+                hide-on-ok = true;
+                format = "{nr_failed}✗";
               };
               network = {
                 format-icons = [
@@ -194,6 +201,40 @@
                 tooltip-format = "{volume}%";
                 on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; # Updated command
                 max-volume = 150; # Optional: allow volume over 100%
+              };
+              "group/group-power" = {
+                orientation = "inherit";
+                drawer = {
+                  transition-duration = 500;
+                  children-class = "not-power";
+                  transition-left-to-right = false;
+                };
+                modules = [
+                  "custom/power"
+                  "custom/lock"
+                  "custom/reboot"
+                  "custom/hibernate"
+                ];
+              };
+              "custom/hibernate" = {
+                format = "⏼";
+                tooltip-format = "hibernate";
+                on-click = "systemctl hibernate";
+              };
+              "custom/lock" = {
+                format = "";
+                tooltip-format = "lock";
+                on-click = "hyprlock";
+              };
+              "custom/reboot" = {
+                format = "";
+                tooltip-format = "reboot";
+                on-click = "reboot";
+              };
+              "custom/power" = {
+                format = "⏻";
+                tooltip-format = "power off";
+                on-click = "shutdown now";
               };
               tray = {
                 spacing = 13;

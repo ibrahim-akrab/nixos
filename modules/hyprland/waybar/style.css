@@ -17,12 +17,16 @@
   margin-right: 3px;
 }
 
-#cpu,
-#battery,
+#tray,
 #network,
 #bluetooth,
 #wireplumber,
-#tray,
+#cpu,
+#memory,
+#systemd-failed-units,
+#battery,
+.group,
+.custom,
 #clock {
   background-color: transparent;
   min-width: 12px;
