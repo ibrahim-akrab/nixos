@@ -1,6 +1,7 @@
 {
   flake.modules.homeManager.hyprland =
     {
+      config,
       pkgs,
       ...
     }:
@@ -18,6 +19,7 @@
           "hyprsunset"
           "systemctl --user start hyprpolkitage"
           "wl-clip-persist --clipboard regular & clipse -listen"
+          "hyprctl setcursor ${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}"
 
           # "dropbox-cli start"  # Uncomment to run Dropbox
         ];
