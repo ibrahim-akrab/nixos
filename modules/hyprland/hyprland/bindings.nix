@@ -152,6 +152,7 @@
           ", XF86AudioPause, exec, swayosd-client --playerctl pause"
           ", XF86AudioPlay, exec, swayosd-client --playerctl play"
           ", XF86AudioPrev, exec, swayosd-client --playerctl prev"
+	  ",Caps_Lock, exec, sleep 0.2 && swayosd-client --caps-lock"
         ];
       };
     };
