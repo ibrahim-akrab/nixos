@@ -14,11 +14,6 @@
         "$passwordManager" = lib.mkDefault "bitwarden";
         "$messenger" = lib.mkDefault "telegram";
         "$webapp" = lib.mkDefault "$browser --app";
-
-        # monitor = cfg.monitors;
-        debug = {
-          disable_logs = false;
-        };
       };
     };
 }
