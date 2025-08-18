@@ -32,7 +32,7 @@
           # "SUPER SHIFT, X, exec, $webapp=https://x.com/compose/post"
 
           "SUPER, return, exec, $terminal"
-          "SUPER, F, exec, $fileManager"
+          "SUPER, E, exec, $terminal -e $fileManager"
           "SUPER, B, exec, $browser"
           "SUPER, M, exec, $music"
           "SUPER, N, exec, $terminal -e nvim"
