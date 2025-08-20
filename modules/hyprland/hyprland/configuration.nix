@@ -1,7 +1,7 @@
 {
   flake.modules.homeManager.hyprland =
     {
-    pkgs,
+      pkgs,
       lib,
       ...
     }:
