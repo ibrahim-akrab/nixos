@@ -2,6 +2,7 @@
   flake.modules.homeManager.hyprland =
     {
       pkgs,
+      lib,
       ...
     }:
     let
@@ -55,7 +56,7 @@
           "SUPER CTRL, ESCAPE, exec, reboot"
           "SUPER SHIFT CTRL, ESCAPE, exec, systemctl poweroff"
           "SUPER SHIFT CTRL, H, exec, systemctl hibernate"
-          "SUPER, K, exec, ${pkgs.lib.getExe show-bindings}"
+          "SUPER, K, exec, ${lib.getExe show-bindings}"
 
           # Control tiling
           "SUPER, J, togglesplit, # dwindle"
@@ -142,8 +143,8 @@
           ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
           "SHIFT,XF86AudioRaiseVolume, exec, swayosd-client --input-volume raise"
           "SHIFT,XF86AudioLowerVolume, exec, swayosd-client --input-volume lower"
-          ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
-          ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+          ",XF86MonBrightnessUp, exec, swayosd-client --custom-progress=$(brightnessctl s +5% -n1 -e2 -m | awk -F, '{print $4/100}') --custom-progress-text=󰖨"
+          ",XF86MonBrightnessDown, exec, swayosd-client --custom-progress=$(brightnessctl s 5%- -n1 -e2 -m | awk -F, '{print $4/100}') --custom-progress-text=󰖨"
         ];
 
         bindl = [
