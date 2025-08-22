@@ -13,7 +13,7 @@
           "tile, class:^(chromium)$"
 
           # Settings management
-          "float, class:^(org.pulseaudio.pavucontrol|blueman-manager)$"
+          "float, class:^(org.pulseaudio.pavucontrol|.blueman-manager-wrapped)$"
 
           # Float Steam, fullscreen RetroArch
           "float, class:^(steam)$"
