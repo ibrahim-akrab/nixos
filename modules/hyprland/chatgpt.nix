@@ -1,0 +1,24 @@
+{
+  flake.modules.homeManager.hyprland =
+    { pkgs, ... }:
+    let
+      specialTitle = "chatgpt-special-terminal";
+      size = 70;
+      offset = (100 - size) / 2;
+    in
+    {
+      home.packages = [ pkgs.gpt-cli ];
+      wayland.windowManager.hyprland.settings = {
+        exec-once = [
+          "[workspace special:chatgpt silent; float; move ${toString offset}% ${toString offset}%; size ${toString size}% ${toString size}%] $terminal -T ${specialTitle} --hold sh -c 'while true; do gpt --model gpt-4.1 --no_price dev; clear; done'"
+        ];
+        windowrule = [ "workspace special:chatgpt, title:${specialTitle}" ];
+        bind = [
+          # mapping chatgpt to the windows assistant key
+          "SUPER SHIFT, code:201, togglespecialworkspace, chatgpt"
+
+        ];
+      };
+
+    };
+}
