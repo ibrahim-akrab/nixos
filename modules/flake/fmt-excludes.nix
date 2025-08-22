@@ -5,5 +5,6 @@
     ".editorconfig"
     "*.sh"
     "*.jpg"
+    "*.qcow2"
   ];
 }
