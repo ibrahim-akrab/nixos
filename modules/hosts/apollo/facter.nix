@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  flake.modules.nixos."hosts/apollo" = {
+  flake.modules.nixos.apollo = {
     imports = [ config.flake.modules.nixos.facter ];
     facter.reportPath = ./facter.json;
   };
