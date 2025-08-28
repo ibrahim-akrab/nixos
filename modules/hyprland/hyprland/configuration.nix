@@ -9,7 +9,7 @@
       wayland.windowManager.hyprland.settings = {
         # Default applications
         "$terminal" = lib.mkDefault "${lib.getExe pkgs.kitty}";
-        "$fileManager" = lib.mkDefault "${lib.getExe pkgs.yazi}";
+        "$fileManager" = lib.mkDefault "${lib.getExe pkgs.kdePackages.dolphin}";
         "$browser" = lib.mkDefault "${lib.getExe pkgs.librewolf} --new-window";
         # "$music" = lib.mkDefault "spotify";
         "$passwordManager" = lib.mkDefault "${lib.getExe pkgs.bitwarden-desktop}";

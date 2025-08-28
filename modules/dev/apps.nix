@@ -29,7 +29,6 @@
 
         tree
         cht-sh
-        vim
         wget
         git
         lazygit
