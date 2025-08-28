@@ -1,6 +1,9 @@
 { inputs, ... }:
 {
-  flake-file.inputs.nix-colors.url = "github:misterio77/nix-colors";
+  flake-file.inputs.nix-colors = {
+    url = "github:misterio77/nix-colors";
+    inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+  };
 
   flake.modules = {
     nixos.base = {

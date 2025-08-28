@@ -1,5 +1,9 @@
 {
-  flake-file.inputs.lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+  flake-file.inputs.lanzaboote = {
+    url = "github:nix-community/lanzaboote/v0.4.2";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.flake-parts.follows = "flake-parts";
+  };
 
   flake.modules = {
     nixos.secure-boot =

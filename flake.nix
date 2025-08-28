@@ -10,6 +10,11 @@
       url = "github:spikespaz/allfollow";
     };
     disko = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/disko";
     };
     flake-file = {
@@ -19,9 +24,22 @@
       url = "github:hercules-ci/flake-parts";
     };
     home-manager = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/home-manager";
     };
     hyprland = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        systems = {
+          follows = "systems";
+        };
+      };
       url = "github:hyprwm/Hyprland";
     };
     impermanence = {
@@ -31,18 +49,36 @@
       url = "github:vic/import-tree";
     };
     lanzaboote = {
+      inputs = {
+        flake-parts = {
+          follows = "flake-parts";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/lanzaboote/v0.4.2";
     };
     mixrank = {
       url = "git+ssh://git@gitlab.com/mixrank/mixrank";
     };
     nix-colors = {
+      inputs = {
+        nixpkgs-lib = {
+          follows = "nixpkgs-lib";
+        };
+      };
       url = "github:misterio77/nix-colors";
     };
     nixos-facter-modules = {
       url = "github:nix-community/nixos-facter-modules";
     };
     nixos-wsl = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/nixos-wsl";
     };
     nixpkgs = {
@@ -50,6 +86,20 @@
     };
     nixpkgs-lib = {
       follows = "nixpkgs";
+    };
+    nixvim = {
+      inputs = {
+        flake-parts = {
+          follows = "flake-parts";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        systems = {
+          follows = "systems";
+        };
+      };
+      url = "github:nix-community/nixvim";
     };
     systems = {
       url = "github:nix-systems/default";

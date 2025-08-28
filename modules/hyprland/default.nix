@@ -1,5 +1,10 @@
 {
-  flake-file.inputs.hyprland.url = "github:hyprwm/Hyprland";
+  flake-file.inputs.hyprland = {
+    url = "github:hyprwm/Hyprland";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.systems.follows = "systems";
+
+  };
 
   flake.modules = {
     nixos.hyprland =
