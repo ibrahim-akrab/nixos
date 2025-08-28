@@ -9,6 +9,9 @@
           vimAlias = lib.mkDefault true;
           vimdiffAlias = lib.mkDefault true;
           defaultEditor = lib.mkDefault true;
+          coc = {
+            enable = true;
+          };
         };
       };
     };
