@@ -78,6 +78,7 @@
             "/var/lib/sbctl"
             "/var/lib/systemd/backlight"
             "/var/lib/zerotier-one"
+            "/var/lib/upower"
           ];
           files = [
             "/etc/machine-id"
