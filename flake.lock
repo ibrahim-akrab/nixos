@@ -797,11 +797,11 @@
         "nixpkgs_py3": "nixpkgs_py3"
       },
       "locked": {
-        "lastModified": 1756569410,
-        "narHash": "sha256-JiyWN0MBuvgPAatJbO/AgOe7UqV3Nl8DCMh2g8Unbqw=",
+        "lastModified": 1757093259,
+        "narHash": "sha256-YqCBQj1SVuxZIhlnAkDtjCEWUeuf4mR6SwdJVNLCNh4=",
         "ref": "refs/heads/master",
-        "rev": "83340d73418fdbc1e5cbf583db15e2b098689ead",
-        "revCount": 77054,
+        "rev": "f90fb3bc27ac084813d98483f7afb92258c84436",
+        "revCount": 77166,
         "type": "git",
         "url": "ssh://git@gitlab.com/mixrank/mixrank"
       },
