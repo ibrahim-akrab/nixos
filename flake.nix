@@ -87,20 +87,6 @@
     nixpkgs-lib = {
       follows = "nixpkgs";
     };
-    nixvim = {
-      inputs = {
-        flake-parts = {
-          follows = "flake-parts";
-        };
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        systems = {
-          follows = "systems";
-        };
-      };
-      url = "github:nix-community/nixvim";
-    };
     systems = {
       url = "github:nix-systems/default";
     };
