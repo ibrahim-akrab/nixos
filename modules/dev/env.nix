@@ -7,10 +7,6 @@
     home.shellAliases = {
       ".." = "cd ..";
       "..." = "cd ../..";
-      #"ls" = "lsd";
-      #"l" = "lsd";
-      #"ll" = "lsd -l";
-      #"la" = "lsd -la";
     };
   };
 }

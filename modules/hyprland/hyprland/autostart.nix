@@ -10,6 +10,7 @@
         hyprsunset
         wl-clip-persist
         clipse
+        wl-clipboard
       ];
       wayland.windowManager.hyprland.settings = {
         exec-once = [
