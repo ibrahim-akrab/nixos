@@ -5,7 +5,7 @@
       persist = pkgs.writeShellScriptBin "persist" ''
         dir="/persist/$(dirname $1)"
         sudo mkdir -p $dir
-        sudo cp -r $@ $dir
+        sudo cp -ra $@ $dir
       '';
       fs-diff-btrfs = pkgs.writeShellScriptBin "fs-diff-btrfs" ''
         cleanup() {
