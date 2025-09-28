@@ -14,6 +14,8 @@
         file
         wget
         git
+        unzip
+        dig
       ];
     };
 }
