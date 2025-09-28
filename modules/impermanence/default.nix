@@ -71,6 +71,7 @@
           directories = [
             "/etc/NetworkManager/system-connections"
             "/var/cache/powertop"
+            "/var/cache/ccache"
             "/var/lib/bluetooth"
             "/var/lib/fprint"
             "/var/lib/NetworkManager"

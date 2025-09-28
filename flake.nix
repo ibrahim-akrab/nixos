@@ -87,6 +87,9 @@
     nixpkgs-lib = {
       follows = "nixpkgs";
     };
+    robotnix = {
+      url = "github:nix-community/robotnix";
+    };
     systems = {
       url = "github:nix-systems/default";
     };
