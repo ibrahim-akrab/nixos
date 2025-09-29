@@ -152,7 +152,7 @@
       # === SIGNING (for production builds) ===
       signing.enable = true;
       # fix for missing com.android.hardware.boot keys in AOSP
-      signing.apex.packageNames = ["com.android.hardware.boot"];
+      signing.apex.packageNames = [ "com.android.hardware.boot" ];
     }
   );
 }
