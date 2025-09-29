@@ -87,6 +87,7 @@
             "/etc/ssh/ssh_host_ed25519_key.pub"
             "/etc/ssh/ssh_host_rsa_key"
             "/etc/ssh/ssh_host_rsa_key.pub"
+            "/var/cache/tuigreet/lastuser"
             #"/var/lib/systemd/tpm2-srk-public-key.pem"
             #"/var/lib/systemd/tpm2-srk-public-key.tpm2b_public"
           ];
