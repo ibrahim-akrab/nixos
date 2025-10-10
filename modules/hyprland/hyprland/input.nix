@@ -27,8 +27,10 @@
 
         # https://wiki.hyprland.org/Configuring/Variables/#gestures
         gestures = lib.mkDefault {
-          workspace_swipe = true;
-          workspace_swipe_distance = 100;
+          gesture = [
+            "3, horizontal, workspace"
+            "3, pinch, scale: 1.5, fullscreen"
+          ];
         };
       };
     };
