@@ -32,14 +32,14 @@
 
       # Enables ccache for the build process. Remember to add /var/cache/ccache as
       # an additional sandbox path to your Nix config.
-      ccache.enable = true;
+      # ccache.enable = true;
 
       # === VENDOR BLOB INTEGRATION ===
       source.dirs."vendor/xiaomi/rodin" = {
         src = pkgs.fetchgit {
-          url = "https://github.com/ibrahim-akrab/proprietary_vendor_xiaomi_rodin.git";
+          url = "https://gitea.com/xyzuniverse/proprietary_vendor_xiaomi_rodin.git";
           rev = "refs/heads/lineage-22.2";
-          sha256 = "sha256-Ppk3+0FriVlBtvL0wD4UJRmuULriATvugDZgbirWpF4="; # Replace with actual hash after first build
+          sha256 = "sha256-8d/b1z95FrERLwCSCvprB6R1Z2wK7PEimpn4S7a8ZsU="; # Replace with actual hash after first build
           fetchLFS = true;
         };
       };
@@ -47,10 +47,10 @@
       # === DEVICE TREE ===
       source.dirs."device/xiaomi/rodin" = {
         src = pkgs.fetchFromGitHub {
-          owner = "ibrahim-akrab";
+          owner = "mt6899-rodin";
           repo = "android_device_xiaomi_rodin";
           rev = "lineage-22.2";
-          sha256 = "sha256-JUnJnMsapP1mh9mKNQNsSA/TSOkzjeddic3yMATRY+E="; # Replace with actual hash after first build
+          sha256 = "sha256-cVdh/8Eho/lrPJEhpRNRE70mAFyRTwLQyK6JwLz4x3Q="; # Replace with actual hash after first build
         };
       };
 
@@ -64,7 +64,7 @@
           owner = "mt6899-rodin";
           repo = "android_hardware_xiaomi";
           rev = "lineage-22.2";
-          sha256 = "sha256-jbpBwSCPoF3scYiUmICErhtqsToThAG4PwHUTsOE8ME="; # Replace with actual hash after first build
+          sha256 = "sha256-jbpBwSCPoF3scYiUmICErhtqsToThAG4PwHUTsOE8ME"; # Replace with actual hash after first build
         };
       };
 
@@ -75,7 +75,7 @@
           owner = "mt6899-rodin";
           repo = "android_hardware_mediatek";
           rev = "lineage-22.2";
-          sha256 = "sha256-l0JX3dITwdZhO+J17bjebOUJT1p+u3b7483lFsoVpRw="; # Replace with actual hash after first build
+          sha256 = "sha256-1EM5K3pVP+VXeH7vxgAaBT3MAQU8eRTj6WFvH1Jw1j0="; # Replace with actual hash after first build
         };
       };
 
@@ -87,7 +87,7 @@
           owner = "mt6899-rodin";
           repo = "android_device_xiaomi_rodin-kernel";
           rev = "lineage-22.2";
-          sha256 = "sha256-xAWPjEcpWXtobgisBQlK760c4Jh6EEjCBHZYWyTRdjQ=";
+          sha256 = "sha256-txjXvtfxjr+iBz19uc1ZKhhgzit98uErwXxhPYqOhek=";
         };
       };
 
@@ -141,8 +141,12 @@
         };
 
       };
-      apps.prebuilt.F-Droid.fingerprint = "DB1BA1EF674257FADA39682BF05D93178621B2C0E8A77E5842CAC13405BEAE12"; # sha256 of the certificate used to sign apk (f-droid.x509.pem)
+      # apps.prebuilt.F-Droid.fingerprint = "DB1BA1EF674257FADA39682BF05D93178621B2C0E8A77E5842CAC13405BEAE12"; # sha256 of the certificate used to sign apk (f-droid.x509.pem)
       apps.seedvault.enable = true;
+      apps.updater = {
+        enable = true;
+        url = "https://github.com/ibrahim-akrab/ota-rodin/raw/refs/heads/lineage-22.2/";
+      };
       microg.enable = true;
 
       # Reduce memory usage for MediaTek builds if needed
