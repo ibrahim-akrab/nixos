@@ -6,96 +6,48 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    allfollow = {
-      url = "github:spikespaz/allfollow";
-    };
     disko = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";
     };
-    flake-file = {
-      url = "github:vic/flake-file";
-    };
+    flake-file.url = "github:vic/flake-file";
     flake-parts = {
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:hercules-ci/flake-parts";
     };
     home-manager = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
     };
     hyprland = {
       inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        systems = {
-          follows = "systems";
-        };
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
       };
       url = "github:hyprwm/Hyprland";
     };
-    impermanence = {
-      url = "github:nix-community/impermanence";
-    };
-    import-tree = {
-      url = "github:vic/import-tree";
-    };
+    impermanence.url = "github:nix-community/impermanence";
+    import-tree.url = "github:vic/import-tree";
     lanzaboote = {
       inputs = {
-        flake-parts = {
-          follows = "flake-parts";
-        };
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
       };
       url = "github:nix-community/lanzaboote/v0.4.2";
     };
-    mixrank = {
-      url = "git+ssh://git@gitlab.com/mixrank/mixrank";
-    };
+    mixrank.url = "git+ssh://git@gitlab.com/mixrank/mixrank";
     nix-colors = {
-      inputs = {
-        nixpkgs-lib = {
-          follows = "nixpkgs-lib";
-        };
-      };
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:misterio77/nix-colors";
     };
-    nixos-facter-modules = {
-      url = "github:nix-community/nixos-facter-modules";
-    };
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixos-wsl = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixos-wsl";
     };
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    };
-    nixpkgs-lib = {
-      follows = "nixpkgs";
-    };
-    robotnix = {
-      url = "github:nix-community/robotnix";
-    };
-    systems = {
-      url = "github:nix-systems/default";
-    };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-lib.follows = "nixpkgs";
+    systems.url = "github:nix-systems/default";
   };
 
 }
