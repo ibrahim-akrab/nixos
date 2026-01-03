@@ -17,8 +17,6 @@
         channel.enable = lib.mkDefault false;
         settings.nix-path = [ "nixpkgs=${pkgs.path}" ];
 
-        package = pkgs.nixVersions.nix_2_28;
-
         # From https://jackson.dev/post/nix-reasonable-defaults/
         extraOptions = ''
           connect-timeout = 5
