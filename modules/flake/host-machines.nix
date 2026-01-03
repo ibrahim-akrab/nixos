@@ -3,28 +3,25 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   prefix = "hosts/";
   collectHostsModules = modules: lib.filterAttrs (name: _: lib.hasPrefix prefix name) modules;
-in
-{
+in {
   flake.nixosConfigurations = lib.pipe (collectHostsModules config.flake.modules.nixos) [
     (lib.mapAttrs' (
-      name: module:
-      let
+      name: module: let
         specialArgs = {
           inherit inputs;
-          hostConfig = module // {
+          hostConfig = {
             name = lib.removePrefix prefix name;
           };
         };
-      in
-      {
+      in {
         name = lib.removePrefix prefix name;
         value = inputs.nixpkgs.lib.nixosSystem {
           inherit specialArgs;
-          modules = module.imports ++ [
+          modules = [
+            module
             {
               home-manager.extraSpecialArgs = specialArgs;
             }

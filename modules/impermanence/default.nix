@@ -101,8 +101,8 @@
       }:
       {
         home.packages = [
-          inputs.self.packages.${pkgs.system}.fs-diff-btrfs
-          inputs.self.packages.${pkgs.system}.persist
+          inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.fs-diff-btrfs
+          inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.persist
         ];
       };
   };
