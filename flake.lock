@@ -920,11 +920,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1767445453,
-        "narHash": "sha256-NTQ13/S1LU7KSRwiY5yT9VNSia1fV42eQjKn9DXpJZ0=",
+        "lastModified": 1769379081,
+        "narHash": "sha256-v0Alkc96VEkqTFCrRkQ4sJyHtSi4YsbOrhBGt/xOBSk=",
         "ref": "refs/heads/master",
-        "rev": "1cda135a2e7d9d4362507fb1bf2ec61468ef0789",
-        "revCount": 81873,
+        "rev": "714e69935e85c30b980f9de65e64cffee542948c",
+        "revCount": 82830,
         "type": "git",
         "url": "ssh://git@gitlab.com/mixrank/mixrank"
       },
