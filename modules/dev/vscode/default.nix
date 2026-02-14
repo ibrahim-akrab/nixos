@@ -15,7 +15,6 @@
             yzhang.markdown-all-in-one
             ms-python.python
             ms-pyright.pyright
-            kamadorueda.alejandra
             bbenoist.nix
           ];
           userSettings = builtins.fromJSON (builtins.readFile ./settings.json);
