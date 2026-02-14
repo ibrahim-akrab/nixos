@@ -6,7 +6,6 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    allfollow.url = "github:spikespaz/allfollow";
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";
@@ -21,10 +20,7 @@
       url = "github:nix-community/home-manager";
     };
     hyprland = {
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
+      inputs.systems.follows = "systems";
       url = "github:hyprwm/Hyprland";
     };
     impermanence.url = "github:nix-community/impermanence";
