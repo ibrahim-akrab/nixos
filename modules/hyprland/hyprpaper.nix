@@ -3,11 +3,12 @@
     services.hyprpaper = {
       enable = true;
       settings = {
-        preload = [
-          (builtins.toString ./wallpaper.jpg)
-        ];
+        splash = false;
         wallpaper = [
-          ",${builtins.toString ./wallpaper.jpg}"
+          {
+            monitor = ""; # Empty monitor means fallback/default for all monitors
+            path = "${./wallpaper.jpg}";
+          }
         ];
       };
     };
