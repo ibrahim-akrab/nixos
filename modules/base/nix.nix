@@ -4,11 +4,10 @@
   };
 
   flake.modules.nixos.base =
-    {
-      inputs,
-      pkgs,
-      lib,
-      ...
+    { inputs
+    , pkgs
+    , lib
+    , ...
     }:
     {
       nix = {

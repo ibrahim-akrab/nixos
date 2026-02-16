@@ -8,10 +8,9 @@
 
   flake.modules = {
     nixos.hyprland =
-      {
-        inputs,
-        pkgs,
-        ...
+      { inputs
+      , pkgs
+      , ...
       }:
       {
         programs.hyprland = {
@@ -29,10 +28,9 @@
         };
       };
     homeManager.hyprland =
-      {
-        inputs,
-        pkgs,
-        ...
+      { inputs
+      , pkgs
+      , ...
       }:
       {
         wayland.windowManager.hyprland = {

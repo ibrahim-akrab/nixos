@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.hyprland = {...}: {
+  flake.modules.homeManager.hyprland = { ... }: {
     wayland.windowManager.hyprland.settings = {
       windowrule = [
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more

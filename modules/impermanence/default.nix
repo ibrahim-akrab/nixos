@@ -3,9 +3,8 @@
 
   flake.modules = {
     nixos.impermanence =
-      {
-        inputs,
-        ...
+      { inputs
+      , ...
       }:
       {
         imports = [ inputs.impermanence.nixosModules.impermanence ];
@@ -94,10 +93,9 @@
         };
       };
     homeManager.impermanence =
-      {
-        inputs,
-        pkgs,
-        ...
+      { inputs
+      , pkgs
+      , ...
       }:
       {
         home.packages = [

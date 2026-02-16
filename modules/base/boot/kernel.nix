@@ -1,9 +1,8 @@
 {
   flake.modules.nixos.base =
-    {
-      pkgs,
-      lib,
-      ...
+    { pkgs
+    , lib
+    , ...
     }:
     {
       # Use latest kernel

@@ -1,13 +1,12 @@
 {
   flake.modules.homeManager.hyprland =
-    {
-      ...
+    { ...
     }:
     {
       wayland.windowManager.hyprland.settings = {
         # Environment variables
         env = [
-          "GDK_SCALE,2"
+          "GDK_SCALE,1"
 
           # Cursor size
           "XCURSOR_SIZE,24"

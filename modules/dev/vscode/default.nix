@@ -1,9 +1,8 @@
 {
   flake.modules.homeManager.dev =
-    {
-      pkgs,
-      osConfig,
-      ...
+    { pkgs
+    , osConfig
+    , ...
     }:
     {
       programs.vscode = {

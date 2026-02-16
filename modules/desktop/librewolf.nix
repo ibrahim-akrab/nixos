@@ -9,7 +9,7 @@
         "security.tls.version.min" = 1;
         "security.ssl.require_safe_negotiation" = false;
         "browser.tabs.inTitlebar" = 0;
-	"webgl.disabled" = false;
+        "webgl.disabled" = false;
       };
     };
   };

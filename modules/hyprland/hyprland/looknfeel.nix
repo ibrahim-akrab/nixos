@@ -1,8 +1,7 @@
 {
   flake.modules.homeManager.hyprland =
-    {
-      config,
-      ...
+    { config
+    , ...
     }:
     let
       hexToRgba = hex: alpha: "rgba(${hex}${alpha})";

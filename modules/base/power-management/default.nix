@@ -1,9 +1,8 @@
 {
   flake.modules = {
     nixos.base =
-      {
-        lib,
-        ...
+      { lib
+      , ...
       }:
       {
         powerManagement.powertop.enable = lib.mkDefault true;

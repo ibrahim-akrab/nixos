@@ -1,9 +1,8 @@
 {
   flake.modules.nixos.base =
-    {
-      hostConfig,
-      lib,
-      ...
+    { hostConfig
+    , lib
+    , ...
     }:
     {
       networking = {

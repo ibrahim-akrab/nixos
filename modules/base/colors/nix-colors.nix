@@ -6,8 +6,7 @@
   };
 
   flake.modules = {
-    nixos.base = {
-    };
+    nixos.base = { };
 
     homeManager.base = {
       imports = [

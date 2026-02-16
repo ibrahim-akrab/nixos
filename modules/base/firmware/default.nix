@@ -1,9 +1,8 @@
 {
   flake.modules.nixos.base =
-    {
-      pkgs,
-      lib,
-      ...
+    { pkgs
+    , lib
+    , ...
     }:
     {
       services.fwupd.enable = lib.mkDefault true; # Firmware updates

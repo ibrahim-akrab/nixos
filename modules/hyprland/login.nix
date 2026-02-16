@@ -1,9 +1,8 @@
 {
   flake.modules.nixos.hyprland =
-    {
-      pkgs,
-      lib,
-      ...
+    { pkgs
+    , lib
+    , ...
     }:
     {
       services.greetd = {

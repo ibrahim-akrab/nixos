@@ -1,8 +1,6 @@
 {
   flake.modules = {
-    nixos.hyprland = {
-    };
-    homeManager.hyprland = {
-    };
+    nixos.hyprland = { };
+    homeManager.hyprland = { };
   };
 }

@@ -5,10 +5,9 @@
     };
 
     homeManager.hyprland =
-      {
-        inputs,
-        config,
-        ...
+      { inputs
+      , config
+      , ...
       }:
       let
         palette = config.colorScheme.palette;

@@ -122,7 +122,7 @@
           clock_format = "%X";
           background_update = true;
           custom_cpu_name = ";
-      disks_filter = ";
+            disks_filter = ";
           mem_graphs = true;
           mem_below_net = false;
           zfs_arc_cached = true;
@@ -137,11 +137,11 @@
           io_mode = false;
           io_graph_combined = false;
           io_graph_speeds = ";
-      net_download = 100;
-      net_upload = 100;
-      net_auto = true;
-      net_sync = true;
-      net_iface = ";
+            net_download = 100;
+            net_upload = 100;
+            net_auto = true;
+            net_sync = true;
+            net_iface = ";
           show_battery = true;
           selected_battery = "Auto";
           log_level = "WARNING";

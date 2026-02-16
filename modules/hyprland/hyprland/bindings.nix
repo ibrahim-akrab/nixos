@@ -1,9 +1,8 @@
 {
   flake.modules.homeManager.hyprland =
-    {
-      pkgs,
-      lib,
-      ...
+    { pkgs
+    , lib
+    , ...
     }:
     let
       show-bindings = pkgs.writeShellScriptBin "show-bindings" (

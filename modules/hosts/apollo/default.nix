@@ -23,9 +23,11 @@ let
     "apollo"
   ];
   nixosModulesNames = builtins.filter (name: config.flake.modules.nixos ? "${name}") my_modules;
-  homeManagerModulesNames = builtins.filter (
-    name: config.flake.modules.homeManager ? "${name}"
-  ) my_modules;
+  homeManagerModulesNames = builtins.filter
+    (
+      name: config.flake.modules.homeManager ? "${name}"
+    )
+    my_modules;
   nixosModules = map (name: config.flake.modules.nixos."${name}") nixosModulesNames;
   homeManagerModules = map (name: config.flake.modules.homeManager."${name}") homeManagerModulesNames;
 

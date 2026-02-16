@@ -1,9 +1,8 @@
 {
   perSystem =
-    {
-      pkgs,
-      lib,
-      ...
+    { pkgs
+    , lib
+    , ...
     }:
     let
       set-charge-limit = pkgs.writeShellScriptBin "set-charge-limit" ''
