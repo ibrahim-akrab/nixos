@@ -66,6 +66,7 @@
             interval = 3;
             nospacing = 1;
             on-click = "kitty -e nmtui";
+            on-click-right = "rfkill toggle wifi";
           };
           battery = {
             interval = 5;
@@ -117,6 +118,7 @@
             tooltip-format-connected = "{num_connections} connected\n\n{device_enumerate}";
             tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
             on-click = "blueman-manager";
+            on-click-right = "rfkill toggle bluetooth";
           };
           wireplumber = {
             # Changed from "pulseaudio"
