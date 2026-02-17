@@ -7,7 +7,7 @@
     let
       palette = config.colorScheme.palette;
       convert = inputs.nix-colors.lib.conversions.hexToRGBString;
-      selected_wallpaper_path = builtins.toString ./wallpaper.jpg;
+      selected_wallpaper_path = "${./wallpaper.jpg}";
       surfaceRgb = "rgb(${convert ", " palette.base02})";
       foregroundRgb = "rgb(${convert ", " palette.base05})";
       foregroundMutedRgb = "rgb(${convert ", " palette.base04})";
