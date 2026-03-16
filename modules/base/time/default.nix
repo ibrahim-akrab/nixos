@@ -2,6 +2,6 @@
   flake.modules.nixos.base =
     { lib, ... }:
     {
-      time.timeZone = lib.mkDefault "Europe/Brussels";
+      time.timeZone = lib.mkDefault "Africa/Cairo";
     };
 }
