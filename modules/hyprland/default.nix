@@ -1,7 +1,6 @@
 {
   flake-file.inputs.hyprland = {
     url = "github:hyprwm/Hyprland";
-    # inputs.nixpkgs.follows = "nixpkgs";
     inputs.systems.follows = "systems";
 
   };
@@ -34,7 +33,6 @@
       {
         wayland.windowManager.hyprland = {
           enable = true;
-          # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           # set the flake package
           package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
           portalPackage =

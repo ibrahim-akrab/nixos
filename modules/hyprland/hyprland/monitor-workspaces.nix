@@ -1,31 +1,9 @@
 {
   flake.modules.homeManager.hyprland =
-    { pkgs
-    , lib
-    , ...
-    }:
     {
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          # # Internal panel (primary)
-          # "eDP-1,2880x1800@60.00100,0x0,2"
-
-          # #External monitors mirrored to eDP-1
-          # "HDMI-A-1,preferred,auto,2,mirror,eDP-1"
-
-          # # Built-in laptop displays (covers eDP-1, eDP-2, etc.)
-          # "eDP-1,preferred,auto,auto"
-          # "eDP-2,preferred,auto,auto"
-
-          # # External monitors extend to the left
-          # "HDMI-A-1,preferred,auto-left,auto"
-          # "HDMI-A-2,preferred,auto-left,auto"
-          # "DP-1,preferred,auto-left,auto"
-          # "DP-2,preferred,auto-left,auto"
-          # "DP-3,preferred,auto-left,auto"
-
-          # Fallback for any other monitors
-          ",preferred,auto-left,auto"
+          ",preferred,auto-right,auto"
         ];
 
         # # Workspace assignments
