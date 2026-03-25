@@ -3,7 +3,7 @@
     {
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          ",preferred,auto-right,auto"
+          ",preferred,auto-up,auto"
         ];
 
         # # Workspace assignments
