@@ -49,13 +49,6 @@
           tarball-ttl = lib.mkDefault (60 * 60 * 24);
         };
 
-        # Garbage collection
-        gc = {
-          automatic = lib.mkDefault true;
-          dates = lib.mkDefault "weekly";
-          options = lib.mkDefault "--delete-older-than 30d";
-        };
-
         # Registry for flakes
         registry = {
           nixpkgs.flake = inputs.nixpkgs;
