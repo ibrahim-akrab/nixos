@@ -4,8 +4,8 @@
     , lib
     , ...
     }:
-    let
-      set-charge-limit = pkgs.writeShellScriptBin "set-charge-limit" ''
+    {
+      packages.battery-charge-limit = pkgs.writeShellScriptBin "battery-charge-limit" ''
         # Function to print usage
         print_usage() {
             echo "Usage: $(basename $0) <percentage>"
@@ -43,8 +43,5 @@
         # write value to embedded controller's register (0xD7)
         sudo ${lib.getExe' pkgs.nbfc-linux "ec_probe"} write 0xD7 "$hex_result"
       '';
-    in
-    {
-      packages.set-charge-limit = set-charge-limit;
     };
 }

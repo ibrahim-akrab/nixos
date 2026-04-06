@@ -3,7 +3,7 @@
     { inputs, pkgs, ... }:
     {
       home.packages = [
-        inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.set-charge-limit
+        inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.battery-charge-limit
       ];
     };
 }
