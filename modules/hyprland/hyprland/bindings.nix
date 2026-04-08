@@ -58,7 +58,7 @@
           "SUPER, K, exec, ${lib.getExe show-bindings}"
 
           # Control tiling
-          "SUPER, J, togglesplit, # dwindle"
+          "SUPER, J, layoutmsg, togglesplit # dwindle"
           "SUPER, P, pseudo, # dwindle"
           "SUPER, V, togglefloating,"
           "SUPER, F, fullscreen,"
