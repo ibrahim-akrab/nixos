@@ -22,6 +22,7 @@
           createHome = true;
           extraGroups = [
             "audio"
+            "podman"
             "video"
             "input"
             "networkmanager"
