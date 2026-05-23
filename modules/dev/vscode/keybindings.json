@@ -1,0 +1,102 @@
+[
+  {
+    "key": "space e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
+  },
+  {
+    "key": "space o",
+    "command": "workbench.view.explorer",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "h",
+    "command": "list.collapse",
+    "when": "panelFocus && activePanel == 'workbench.panel.markers'"
+  },
+  {
+    "key": "j",
+    "command": "list.focusDown",
+    "when": "panelFocus && activePanel == 'workbench.panel.markers'"
+  },
+  {
+    "key": "k",
+    "command": "list.focusUp",
+    "when": "panelFocus && activePanel == 'workbench.panel.markers'"
+  },
+  {
+    "key": "l",
+    "command": "list.select",
+    "when": "panelFocus && activePanel == 'workbench.panel.markers'"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.actions.view.toggleProblems",
+    "when": "panelFocus"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "panelFocus && terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "-editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "explorer.newFolder"
+  },
+  {
+    "key": "ctrl+z",
+    "command": "workbench.action.maximizeEditorHideSidebar"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "f2",
+    "command": "-renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "panelFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "panelFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "composerMode.agent"
+  }
+]
