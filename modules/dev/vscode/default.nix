@@ -1,7 +1,7 @@
 {
   flake.modules.homeManager.dev =
     { pkgs
-    , osConfig
+    , osConfig ? { }
     , ...
     }:
     {

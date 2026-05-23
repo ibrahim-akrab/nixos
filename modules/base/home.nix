@@ -15,7 +15,7 @@
       home-manager.backupFileExtension = lib.mkDefault "backup";
     };
     homeManager.base =
-      { osConfig, ... }:
+      { osConfig ? { }, lib, ... }:
       {
         programs.home-manager.enable = lib.mkDefault true;
         # See https://ohai.social/@rycee/112502545466617762
@@ -31,7 +31,7 @@
             store.cleanup = lib.mkDefault true;
           };
         };
-        home.stateVersion = lib.mkDefault osConfig.system.stateVersion;
+        home.stateVersion = lib.mkDefault (osConfig.system.stateVersion or "25.05");
       };
   };
 }
