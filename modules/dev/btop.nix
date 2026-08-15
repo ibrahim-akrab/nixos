@@ -95,7 +95,7 @@
           graph_symbol_net = "default";
           graph_symbol_proc = "default";
           shown_boxes = "cpu mem net proc";
-          update_ms = 2000;
+          update_ms = 200;
           proc_sorting = "cpu lazy";
           proc_reversed = false;
           proc_tree = false;
