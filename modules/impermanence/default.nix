@@ -78,6 +78,7 @@
             "/var/lib/sbctl"
             "/var/lib/systemd/backlight"
             "/var/lib/zerotier-one"
+            "/var/lib/tailscale"
             "/var/lib/upower"
           ];
           files = [
@@ -87,8 +88,6 @@
             "/etc/ssh/ssh_host_rsa_key"
             "/etc/ssh/ssh_host_rsa_key.pub"
             "/var/cache/tuigreet/lastuser"
-            #"/var/lib/systemd/tpm2-srk-public-key.pem"
-            #"/var/lib/systemd/tpm2-srk-public-key.tpm2b_public"
           ];
         };
       };
