@@ -7,9 +7,6 @@
     {
       home.packages = with pkgs; [
         hyprsunset
-        wl-clip-persist
-        clipse
-        wl-clipboard
       ];
       wayland.windowManager.hyprland.settings = {
         exec-once = [
@@ -18,7 +15,7 @@
           # "swaybg -i ~/.config/omarchy/current/background -m fill"
           "hyprsunset"
           "systemctl --user start hyprpolkitage"
-          "wl-clip-persist --clipboard regular & clipse -listen"
+          # clipboard daemons live in ../clipboard.nix as systemd user services
           "hyprctl setcursor ${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}"
 
           # "dropbox-cli start"  # Uncomment to run Dropbox
