@@ -14,6 +14,7 @@
       yazi = {
         enable = true;
         enableBashIntegration = true;
+        shellWrapperName = "y";
       };
       lsd = {
         enable = true;

@@ -6,6 +6,7 @@
       mime.enable = lib.mkDefault true;
       userDirs = {
         enable = lib.mkDefault true;
+        setSessionVariables = lib.mkDefault true;
         createDirectories = lib.mkDefault true;
         templates = lib.mkDefault null;
         music = lib.mkDefault null;

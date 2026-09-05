@@ -9,6 +9,8 @@
           vimAlias = lib.mkDefault true;
           vimdiffAlias = lib.mkDefault true;
           defaultEditor = lib.mkDefault true;
+          withPython3 = lib.mkDefault false;
+          withRuby = lib.mkDefault false;
           coc = {
             enable = true;
           };

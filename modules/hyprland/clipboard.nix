@@ -5,10 +5,6 @@
       # Both daemons only make sense once a wayland session exists, and both
       # should come back on their own if they stop -- a dead clipse listener is
       # silent otherwise (no history recorded until the next login).
-      #
-      # Restart=always, not on-failure: opening the clipse TUI (CTRL SUPER V)
-      # makes the running listener exit *successfully*, which on-failure would
-      # ignore, leaving the clipboard unrecorded after the first lookup.
       clipboardService = description: exec: {
         Unit = {
           Description = description;
@@ -23,6 +19,13 @@
         };
         Install.WantedBy = [ "graphical-session.target" ];
       };
+
+      # `clipse -listen` spawns exactly these two watchers and exits, which
+      # leaves systemd nothing to supervise. Run them directly instead.
+      clipseWatcher = type:
+        clipboardService
+          "clipse clipboard history listener (${type})"
+          "${pkgs.wl-clipboard}/bin/wl-paste --type ${type} --watch ${pkgs.clipse}/bin/clipse --wl-store";
     in
     {
       home.packages = with pkgs; [
@@ -36,11 +39,8 @@
           "Keep clipboard contents alive after the source window closes"
           "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular";
 
-        # -listen-shell, not -listen: the latter forks wl-paste watchers and
-        # exits, so systemd would tear the watchers down with the main process.
-        clipse = clipboardService
-          "clipse clipboard history listener"
-          "${pkgs.clipse}/bin/clipse -listen-shell";
+        clipse-text = clipseWatcher "text";
+        clipse-image = clipseWatcher "image/png";
       };
     };
 }

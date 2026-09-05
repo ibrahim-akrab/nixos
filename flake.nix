@@ -7,42 +7,37 @@
 
   inputs = {
     disko = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      inputs.systems.follows = "systems";
-      url = "github:hyprwm/Hyprland";
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
     impermanence.url = "github:nix-community/impermanence";
     import-tree.url = "github:vic/import-tree";
     lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/lanzaboote/v1.0.0";
     };
     mixrank.url = "git+ssh://git@gitlab.com/mixrank/mixrank";
     nix-colors = {
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:misterio77/nix-colors";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     nixos-wsl = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixos-wsl";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     nixpkgs-lib.follows = "nixpkgs";
-    systems.url = "github:nix-systems/default";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
-
 }
