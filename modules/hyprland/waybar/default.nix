@@ -7,6 +7,7 @@
     homeManager.hyprland =
       { inputs
       , config
+      , pkgs
       , ...
       }:
       let
@@ -249,6 +250,17 @@
 
         programs.waybar = {
           enable = true;
+          package = (pkgs.waybar.override { cavaSupport = false; }).overrideAttrs (old: {
+            version = "0.15.0-unstable-2026-08-27";
+            doInstallCheck = false;
+            mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Dwwan=disabled" ];
+            src = pkgs.fetchFromGitHub {
+              owner = "Alexays";
+              repo = "Waybar";
+              rev = "6d60c8e02be67bb85bb9b1ea803f2fbcf0722002";
+              hash = "sha256-G6AcGuevhkYflQHhJq9GnLhEMgcI51Y6MYKBQvdRPDc=";
+            };
+          });
           settings = [
             (mkBarConfig "eDP-1" [ 1 2 3 4 5 ])
             (mkBarConfig "HDMI-A-1" [ 6 7 8 9 10 ])

@@ -2,28 +2,25 @@
   flake.modules.homeManager.hyprland =
     { config
     , pkgs
+    , lib
     , ...
     }:
     {
       home.packages = with pkgs; [
         hyprsunset
       ];
-      wayland.windowManager.hyprland.settings = {
-        exec-once = [
-          # "hypridle & mako & waybar & fcitx5"
-          # "waybar"
-          # "swaybg -i ~/.config/omarchy/current/background -m fill"
-          "hyprsunset"
-          "systemctl --user start hyprpolkitage"
-          # clipboard daemons live in ../clipboard.nix as systemd user services
-          "hyprctl setcursor ${config.gtk.cursorTheme.name} ${toString config.gtk.cursorTheme.size}"
 
-          # "dropbox-cli start"  # Uncomment to run Dropbox
-        ];
+      wayland.windowManager.hyprland.extraLuaFiles = {
+        "70-autostart" = ./lua/70-autostart.lua;
 
-        exec = [
-          "pkill -SIGUSR2 waybar || waybar"
-        ];
+        # consumed by lua/70-autostart.lua as require("nix.cursor")
+        "nix.cursor" = {
+          autoLoad = false;
+          content = "return ${lib.generators.toLua { } {
+            name = config.gtk.cursorTheme.name;
+            size = config.gtk.cursorTheme.size;
+          }}\n";
+        };
       };
     };
 }

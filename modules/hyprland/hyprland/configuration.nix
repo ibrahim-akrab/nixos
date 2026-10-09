@@ -4,16 +4,22 @@
     , lib
     , ...
     }:
+    let
+      browser = "${lib.getExe pkgs.librewolf} --new-window";
+    in
     {
-      wayland.windowManager.hyprland.settings = {
-        # Default applications
-        "$terminal" = lib.mkDefault "${lib.getExe pkgs.kitty}";
-        "$fileManager" = lib.mkDefault "${lib.getExe' pkgs.kdePackages.dolphin "dolphin"}";
-        "$browser" = lib.mkDefault "${lib.getExe pkgs.librewolf} --new-window";
-        # "$music" = lib.mkDefault "spotify";
-        "$passwordManager" = lib.mkDefault "${lib.getExe pkgs.bitwarden-desktop}";
-        "$messenger" = lib.mkDefault "${lib.getExe pkgs.telegram-desktop}";
-        "$webapp" = lib.mkDefault "$browser --app";
+      # Default applications, consumed by lua/60-bindings.lua as require("nix.apps")
+      wayland.windowManager.hyprland.extraLuaFiles."nix.apps" = {
+        autoLoad = false;
+        content = "return ${lib.generators.toLua { } {
+          inherit browser;
+          terminal = lib.getExe pkgs.kitty;
+          fileManager = lib.getExe' pkgs.kdePackages.dolphin "dolphin";
+          # music = "spotify";
+          passwordManager = lib.getExe pkgs.bitwarden-desktop;
+          messenger = lib.getExe pkgs.telegram-desktop;
+          webapp = "${browser} --app";
+        }}\n";
       };
     };
 }
