@@ -68,6 +68,7 @@
         environment.persistence."/persist" = {
           hideMounts = true;
           directories = [
+            "/etc/mullvad-vpn"
             "/etc/NetworkManager/system-connections"
             "/var/cache/powertop"
             "/var/cache/ccache"
