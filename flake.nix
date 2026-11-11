@@ -6,6 +6,11 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
+    alioth-device = {
+      url = "github:ibrahim-akrab/alioth-device";
+      flake = false;
+    };
+    determinate.url = "github:DeterminateSystems/determinate";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +31,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mixrank.url = "git+ssh://git@gitlab.com/mixrank/mixrank";
+    mobile-nixos = {
+      url = "github:mobile-nixos/mobile-nixos/development";
+      flake = false;
+    };
     nix-colors = {
       url = "github:misterio77/nix-colors";
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
