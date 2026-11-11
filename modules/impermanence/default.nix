@@ -10,7 +10,7 @@
         imports = [ inputs.impermanence.nixosModules.impermanence ];
         boot = {
           # use initrd systemd services to make use of tpm backed full disk encryption
-          # using `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 /dev/nvme0n1p2`
+          # using `sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+2+7+12 --wipe-slot=tpm2 /dev/disk/by-partlabel/luks`
           initrd.systemd.enable = true;
           initrd.systemd.services.rollback = {
             description = "Rollback BTRFS root subvolume to a pristine state";
