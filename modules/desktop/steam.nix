@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.desktop = {
+  flake.modules.nixos.desktop = { lib, pkgs, ... }: lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

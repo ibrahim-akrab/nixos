@@ -1,13 +1,11 @@
 {
   flake.modules.homeManager.dev =
     { pkgs
+    , lib
     , ...
     }:
     {
-      home.packages = with pkgs; [
-        slack
-        telegram-desktop
-
+      home.packages = (lib.optional pkgs.stdenv.hostPlatform.isx86_64 pkgs.slack) ++ (with pkgs; [
         tree
         cht-sh
         file
@@ -15,6 +13,6 @@
         git
         unzip
         dig
-      ];
+      ]);
     };
 }

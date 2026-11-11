@@ -4,6 +4,7 @@
     {
       home.packages = with pkgs; [
         droidcam
+        telegram-desktop
         vlc
       ];
     };
